@@ -1,0 +1,46 @@
+package com.elearning.client.view.auth;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.support.v7.widget.CardView;
+import android.widget.FrameLayout;
+
+import com.elearning.client.R;
+import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
+import com.elearning.client.view.mahasiswa.login.LoginMahasiswaActivityActivity;
+
+import butterknife.ButterKnife;
+import butterknife.BindView;
+
+public class AuthStartActivityActivity extends AppCompatActivity  {
+
+    @BindView(R.id.header) LinearLayout header;
+    @BindView(R.id.scrollView) ScrollView scrollView;
+    @BindView(R.id.itemdosen) CardView itemdosen;
+    @BindView(R.id.button1) FrameLayout button1;
+    @BindView(R.id.item1) CardView item1;
+    @BindView(R.id.button2) FrameLayout button2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.auth_start_activity);
+        ButterKnife.bind(this);
+        button1.setOnClickListener(view -> {
+
+            Intent intentDosen = new Intent(AuthStartActivityActivity.this, LoginDosenActivityActivity.class);
+            startActivity(intentDosen);
+        });
+        button2.setOnClickListener(v -> {
+            Intent intentDosen = new Intent(AuthStartActivityActivity.this, LoginMahasiswaActivityActivity.class);
+            startActivity(intentDosen);
+        });
+
+    }
+
+
+
+}

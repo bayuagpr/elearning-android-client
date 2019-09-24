@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.elearning.client">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".view.SpalshScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.auth.AuthStartActivityActivity" />
+        <activity android:name=".view.mahasiswa.login.LoginMahasiswaActivityActivity" />
+        <activity android:name=".view.dosen.login.LoginDosenActivityActivity"/>
+        <activity android:name=".view.dosen.signup.SignupDosenActivityActivity"/>
+        <activity android:name=".view.mahasiswa.signup.SignupMahasiswaActivityActivity"/>
+        <activity android:name=".view.main.MainActivity"/>
+        <activity android:name=".view.kelas.editor.KelasActivity"/>
+    </application>
+</manifest>

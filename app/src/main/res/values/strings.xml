@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">LEARNSEA</string>
+    <string name="app_pref">Pengaturan</string>
+
+
+    <string name="generic_no_internet_title">Sepertinya Internetmu Bermasalah</string>
+    <string name="generic_no_internet_desc">Coba lagi ya nanti setelah internetmu telah tersambung</string>
+
+    <string name="generic_http_error_title">Maaf Sepertinya Ada Sedikit Masalah Pada Server</string>
+    <string name="generic_http_error_desc">Mohon coba lagi ya nanti</string>
+
+    <string name="login_gagal_title">Email atau sandi salah!</string>
+    <string name="login_gagal_desc">Silahkan coba lagi</string>
+
+    <string name="error_login_expired">Sesi mu telah habis</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <!-- Ukuran Kategori arrays -->
+    <string-array name="ukuran_arrays">
+        <item>XXL</item>
+        <item>XL</item>
+        <item>L</item>
+        <item>M</item>
+        <item>S</item>
+    </string-array>
+</resources>
