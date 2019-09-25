@@ -1,4 +1,4 @@
-package com.elearning.client.view.main;
+package com.elearning.client.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 import com.elearning.client.R;
 import com.elearning.client.utils.SessionManager;
-import com.elearning.client.view.kelas.KelasFragment;
-import com.elearning.client.view.search.SearchActivity;
+import com.elearning.client.view.dosen.kelas.KelasFragment;
+import com.elearning.client.view.mahasiswa.search.SearchActivity;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     SessionManager sessionManager;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.mainFrame, new KelasFragment())
                     .commit();
-        }   else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
             sessionManager.logoutUser();
         }
 

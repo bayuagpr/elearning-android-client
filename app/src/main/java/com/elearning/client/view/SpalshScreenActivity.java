@@ -21,7 +21,7 @@ public class SpalshScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent activityIntent;
             if (session.isLoggedIn()) {
-                activityIntent = new Intent(this, AuthStartActivityActivity.class);
+                activityIntent = new Intent(this, MainActivity.class);
             } else {
                 activityIntent = new Intent(this, AuthStartActivityActivity.class);
             }

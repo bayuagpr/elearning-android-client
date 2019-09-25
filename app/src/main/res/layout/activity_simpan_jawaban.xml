@@ -13,14 +13,40 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/gambar"
-            android:background="#16000000"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"/>
+        <TextView
+            android:id="@+id/tipe"
+            android:text="Tipe: Kuis"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/nilai"
+            android:text="Nilai: Belum dinilai"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/status"
+            android:text="Status: Early"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/selected"
+            android:text="SelectFile.pdf"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
 
         <Button
-            android:id="@+id/select"
+            android:id="@+id/selecting"
             android:text="Select File"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
@@ -40,7 +66,7 @@
 
             <EditText
                 android:id="@+id/nama"
-                android:hint="Deskripsi"
+                android:hint="Deskripsi jawaban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -54,18 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="4dp"
-            android:text="Ukuran : "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
-        <Spinner
-            android:layout_marginTop="2dp"
-            android:id="@+id/ukuran"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         <!--<android.support.design.widget.TextInputLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content">-->
@@ -118,14 +133,24 @@
                 android:text="Hapus"
                 android:layout_height="wrap_content"
                 android:layout_weight=".3"
-                android:layout_width="0dip" />
+                android:layout_width="0dip"
+                android:textAlignment="center"
+                android:background="@color/blue_dark"
+                android:textColor="#fff"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"/>
 
             <Button
                 android:id="@+id/update"
                 android:text="Update"
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
-                android:layout_width="0dip" />
+                android:layout_width="0dip"
+                android:textAlignment="center"
+                android:background="@color/blue_dark"
+                android:textColor="#fff"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"/>
 
         </LinearLayout>
 

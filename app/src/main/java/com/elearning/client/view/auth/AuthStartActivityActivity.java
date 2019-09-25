@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 
 import com.elearning.client.R;
 import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
-import com.elearning.client.view.mahasiswa.login.LoginMahasiswaActivityActivity;
+import com.elearning.client.view.mahasiswa.login.LoginMahasiswaMahasiswaActivityActivity;
 
 import butterknife.ButterKnife;
 import butterknife.BindView;
@@ -35,7 +35,7 @@ public class AuthStartActivityActivity extends AppCompatActivity  {
             startActivity(intentDosen);
         });
         button2.setOnClickListener(v -> {
-            Intent intentDosen = new Intent(AuthStartActivityActivity.this, LoginMahasiswaActivityActivity.class);
+            Intent intentDosen = new Intent(AuthStartActivityActivity.this, LoginMahasiswaMahasiswaActivityActivity.class);
             startActivity(intentDosen);
         });
 

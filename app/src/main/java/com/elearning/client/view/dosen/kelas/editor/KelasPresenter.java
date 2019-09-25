@@ -1,4 +1,4 @@
-package com.elearning.client.view.kelas.editor;
+package com.elearning.client.view.dosen.kelas.editor;
 
 
 import com.elearning.client.model.Kelas;
@@ -24,7 +24,7 @@ public class KelasPresenter {
         disposable = new CompositeDisposable();
     }
 
-    void getListBarang(String token, Integer page) {
+    void getListMatkul(String token, Integer page) {
         view.showProgress();
         disposable.add(
             apiInterface.getAllMataKuliah(token, page, 10)
@@ -32,8 +32,8 @@ public class KelasPresenter {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableObserver<MataKuliahResponse>(){
                         @Override
-                        public void onNext(MataKuliahResponse barangResponse) {
-                            view.setListBarang(barangResponse);
+                        public void onNext(MataKuliahResponse mataKuliahResponse) {
+                            view.setListBarang(mataKuliahResponse);
                         }
 
                         @Override
@@ -50,7 +50,7 @@ public class KelasPresenter {
         );
     }
 
-    void savePenjualan(String token, Kelas kelas) {
+    void saveKelas(String token, Kelas kelas) {
         view.showProgress();
         disposable.add(
                 apiInterface.saveKelas(token, kelas)
@@ -58,8 +58,8 @@ public class KelasPresenter {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableObserver<KelasResponse>() {
                             @Override
-                            public void onNext(KelasResponse penjualanResponse) {
-                                view.statusSuccess("Kelas ditambahkan");
+                            public void onNext(KelasResponse kelasResponse) {
+                                view.statusSuccess("Kelas Disimpan");
                             }
 
                             @Override
@@ -76,7 +76,7 @@ public class KelasPresenter {
         );
     }
 
-    void updatePenjualan(String token, String id, Kelas kelas) {
+    void updateKelas(String token, String id, Kelas kelas) {
         view.showProgress();
         disposable.add(
                 apiInterface.updateKelas(token, id, kelas)
@@ -98,7 +98,7 @@ public class KelasPresenter {
         );
     }
 
-    void deletePenjualan(String token, String id) {
+    void deleteKelas(String token, String id) {
         view.showProgress();
         disposable.add(
                 apiInterface.deleteKelas(token, id)

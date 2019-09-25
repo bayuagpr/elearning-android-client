@@ -1,4 +1,4 @@
-package com.elearning.client.view.kelas.editor;
+package com.elearning.client.view.dosen.kelas.editor;
 
 
 import android.content.Context;
@@ -11,27 +11,26 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
 import com.elearning.client.R;
 import com.elearning.client.model.MataKuliah;
 
 import java.util.List;
 
-public class SpinnerBarangAdapter extends ArrayAdapter<String> {
+public class SpinnerMatkulAdapter extends ArrayAdapter<String> {
 
     private final LayoutInflater mInflater;
     private final Context mContext;
-    private final List<MataKuliah> barangs;
+    private final List<MataKuliah> mataKuliahList;
     private final int mResource;
 
-    public SpinnerBarangAdapter(@NonNull Context context, @LayoutRes int resource,
+    public SpinnerMatkulAdapter(@NonNull Context context, @LayoutRes int resource,
                                 @NonNull List objects) {
         super(context, resource, 0, objects);
 
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mResource = resource;
-        barangs = objects;
+        mataKuliahList = objects;
     }
 
 
@@ -48,9 +47,9 @@ public class SpinnerBarangAdapter extends ArrayAdapter<String> {
 
 
     public int getItemIndexById(String barang_id) {
-        for (MataKuliah barang : this.barangs) {
-            if(barang.getId().toString().equals(barang_id.toString())){
-                return this.barangs.indexOf(barang);
+        for (MataKuliah matkul : this.mataKuliahList) {
+            if(matkul.getId().toString().equals(barang_id.toString())){
+                return this.mataKuliahList.indexOf(matkul);
             }
         }
         return 0;
@@ -59,12 +58,13 @@ public class SpinnerBarangAdapter extends ArrayAdapter<String> {
     private View createItemView(int position, View convertView, ViewGroup parent){
         final View view = mInflater.inflate(mResource, parent, false);
 
+
         TextView nama = (TextView) view.findViewById(R.id.nama);
-        TextView harga = (TextView) view.findViewById(R.id.harga);
 
-        MataKuliah barang = barangs.get(position);
+        MataKuliah mataKuliah = mataKuliahList.get(position);
 
-        nama.setText(barang.getNama());
+
+        nama.setText(mataKuliah.getNama());
 
         return view;
     }

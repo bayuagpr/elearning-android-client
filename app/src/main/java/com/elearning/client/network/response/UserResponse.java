@@ -15,4 +15,8 @@ public class UserResponse {
     @Expose
     @SerializedName("content")
     List<User> userList;
+
+    @Expose
+    @SerializedName("status")
+    private String status;
 }

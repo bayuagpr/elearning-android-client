@@ -213,7 +213,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/signingUp"
+            android:id="@+id/signingMahasiswaUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"

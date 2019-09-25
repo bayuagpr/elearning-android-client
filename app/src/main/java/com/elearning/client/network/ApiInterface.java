@@ -10,6 +10,7 @@ import com.elearning.client.model.MataKuliah;
 import com.elearning.client.model.Materi;
 import com.elearning.client.model.Soal;
 import com.elearning.client.model.User;
+import com.elearning.client.model.UserLogin;
 import com.elearning.client.network.response.DosenResponse;
 import com.elearning.client.network.response.EnrollmentResponse;
 import com.elearning.client.network.response.FakultasResponse;
@@ -42,7 +43,16 @@ public interface ApiInterface {
 
     //Auth
     @POST("credential/auth")
-    Observable<UserResponse> postAuth(@Body User user);
+    Observable<User> postAuth(@Body User user);
+
+    @GET("credential/refresh")
+    Observable<UserResponse> postRefresh();
+
+    @POST("credential/registration")
+    Observable<User> postRegistration(@Body User user);
+
+    @GET("user/current")
+    Observable<UserResponse> getUser(@Header("Authorization") String token);
 
     //Dosen CRUD
     @GET("dosen/tampilkan")

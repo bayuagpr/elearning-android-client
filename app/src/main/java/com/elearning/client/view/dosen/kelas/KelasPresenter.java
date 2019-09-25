@@ -1,8 +1,12 @@
-package com.elearning.client.view.kelas;
+package com.elearning.client.view.dosen.kelas;
 
-import  com.elearning.client.network.ApiClient;
-import  com.elearning.client.network.ApiInterface;
-import  com.elearning.client.network.response.KelasResponse;
+
+
+import android.util.Log;
+
+import com.elearning.client.network.ApiClient;
+import com.elearning.client.network.ApiInterface;
+import com.elearning.client.network.response.KelasResponse;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -21,22 +25,24 @@ public class KelasPresenter {
         disposable = new CompositeDisposable();
     }
 
-    public void getPenjualan(String token, Integer page) {
+    public void getKelas(String token, Integer page) {
         view.showProgress();
         disposable.add(
-                apiInterface.getAllKelas(token,page,10)
+                apiInterface.getAllKelas(token, page, 10)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableObserver<KelasResponse>(){
                             @Override
-                            public void onNext(KelasResponse penjualanResponse) {
-                                view.statusSuccess(penjualanResponse);
+                            public void onNext(KelasResponse kelasResponse) {
+                                view.statusSuccess(kelasResponse);
                             }
 
                             @Override
                             public void onError(Throwable e) {
                                 view.hideProgress();
-                                view.statusError(e.getLocalizedMessage());
+                                view.statusError(e.toString());
+                                Log.d("kelaspresenter", "onError: "+e.getMessage());
+                                e.printStackTrace();
                             }
 
                             @Override

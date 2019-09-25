@@ -41,4 +41,6 @@ public class User{
   @Expose
   @SerializedName("username")
   private String username;
+
+
 }

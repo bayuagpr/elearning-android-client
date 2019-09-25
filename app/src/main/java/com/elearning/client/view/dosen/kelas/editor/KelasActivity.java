@@ -1,4 +1,4 @@
-package com.elearning.client.view.kelas.editor;
+package com.elearning.client.view.dosen.kelas.editor;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,23 +22,20 @@ import com.elearning.client.utils.SessionManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnTextChanged;
 
 public class KelasActivity extends AppCompatActivity implements KelasView {
 
     KelasPresenter presenter;
     ProgressDialog progressDialog;
     SessionManager session;
-    SpinnerBarangAdapter adapter;
+    SpinnerMatkulAdapter adapter;
 
-    String id, barang_id, nama, harga, jumlah_harga, jumlah_barang;
+    String id, barang_id, nama, nama_kelas, matkul_id, jumlah_harga, jumlah_barang;
 
     @BindView(R.id.nama)
     Spinner s_nama;
-    @BindView(R.id.jumlah_barang)
-    EditText et_jumlah_barang;
-    @BindView(R.id.jumlah_harga)
-    EditText et_jumlah_harga;
+    @BindView(R.id.nama_kelas)
+    EditText namaKelas;
     @BindView(R.id.content_simpan)
     LinearLayout content_simpan;
     @BindView(R.id.content_update)
@@ -57,7 +54,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
         progressDialog.setMessage("Loading ...");
         presenter = new KelasPresenter(this);
 
-        presenter.getListBarang(session.getKeyToken(),1);
+        presenter.getListMatkul(session.getKeyToken(),0);
 
         initDataIntent();
 
@@ -75,38 +72,35 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
 
     }
 
-    @OnTextChanged(R.id.jumlah_barang) void jumlah_barang() {
-        // Cek jika value nya di kosongkan
-        String s_jumlah_barang;
-        if (et_jumlah_barang.getText().toString().isEmpty()) {
-            s_jumlah_barang = "1" ;
-        } else {
-            s_jumlah_barang = et_jumlah_barang.getText().toString();
-        }
 
-        try {
-            int total = Integer.parseInt(s_jumlah_barang) * Integer.parseInt(harga);
-            et_jumlah_harga.setText(String.valueOf(total));
-        } catch (NumberFormatException e) {
-
-        }
-    }
 
     @OnClick(R.id.simpan) void simpan() {
         Kelas kelas = new Kelas();
+        kelas.setNama(namaKelas.getText().toString());
         MataKuliah mataKuliah = new MataKuliah();
-        kelas.setNama(et_jumlah_barang.getText().toString());
-        mataKuliah.setNama(nama);
+        mataKuliah.setId(barang_id);
         kelas.setMataKuliah(mataKuliah);
-        presenter.savePenjualan(
+        presenter.saveKelas(
                 session.getKeyToken(),
-               kelas
+                kelas
+
         );
     }
 
+    @OnClick(R.id.update) void update() {
+        Kelas kelas = new Kelas();
+        kelas.setNama(namaKelas.getText().toString());
+        MataKuliah mataKuliah = new MataKuliah();
+        mataKuliah.setId(barang_id);
+        kelas.setMataKuliah(mataKuliah);
+        presenter.updateKelas(
+                session.getKeyToken(),
+                id,
+               kelas        );
+    }
 
     @OnClick(R.id.hapus) void hapus() {
-        presenter.deletePenjualan(
+        presenter.deleteKelas(
                 session.getKeyToken(),
                 id
         );
@@ -114,7 +108,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
 
     @Override
     public Context getContext() {
-        return null;
+        return getApplicationContext();
     }
 
     @Override
@@ -140,14 +134,13 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     }
 
     @Override
-    public void setListBarang(MataKuliahResponse barangResponse) {
-        adapter = new SpinnerBarangAdapter(this, R.layout.spinner_barang,
-                barangResponse.getMataKuliahList());
+    public void setListBarang(MataKuliahResponse mataKuliahResponse) {
+        adapter = new SpinnerMatkulAdapter(this, R.layout.spinner_matkul,
+                mataKuliahResponse.getMataKuliahList());
         s_nama.setAdapter(adapter);
 
         setTextEditor();
     }
-
 
     @Override
     public void onDestroy() {
@@ -158,17 +151,16 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     private void initDataIntent() {
         Intent intent= getIntent();
         id = intent.getStringExtra("id");
-        barang_id = intent.getStringExtra("barang_id");
-        jumlah_barang = intent.getStringExtra("jumlah_barang");
-        jumlah_harga = intent.getStringExtra("jumlah_harga");
+        matkul_id = intent.getStringExtra("matkul_id");
+        nama_kelas = intent.getStringExtra("nama_kelas");
+
     }
 
     private void setTextEditor() {
         if (id != null) {
             getSupportActionBar().setTitle("Update data");
 
-            et_jumlah_barang.setText(jumlah_barang);
-            et_jumlah_harga.setText(jumlah_harga);
+            namaKelas.setText(nama_kelas);
             s_nama.setSelection(adapter.getItemIndexById(barang_id));
 
             content_update.setVisibility(View.VISIBLE);

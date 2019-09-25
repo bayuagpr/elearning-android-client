@@ -1,4 +1,4 @@
-package com.elearning.client.view.search;
+package com.elearning.client.view.mahasiswa.search;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.elearning.client.R;
 import com.elearning.client.network.response.KelasResponse;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.utils.SimpleDividerItemDecoration;
-import com.elearning.client.view.kelas.KelasAdapter;
+import com.elearning.client.view.mahasiswa.kelas.KelasAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,7 +89,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public Context getContext() {
-        return getContext();    }
+        return getApplicationContext();
+    }
 
     @Override
     public void showProgress() {
@@ -102,8 +103,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     }
 
     @Override
-    public void statusSuccess(KelasResponse penjualanResponse) {
-        adapter = new KelasAdapter(penjualanResponse.getKelasList());
+    public void statusSuccess(KelasResponse kelasResponse) {
+        adapter = new KelasAdapter(kelasResponse.getKelasList());
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
         adapter.notifyDataSetChanged();

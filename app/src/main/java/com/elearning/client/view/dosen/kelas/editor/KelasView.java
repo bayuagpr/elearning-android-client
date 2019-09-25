@@ -1,9 +1,8 @@
-package com.elearning.client.view.kelas.editor;
+package com.elearning.client.view.dosen.kelas.editor;
 
 import android.content.Context;
 
 import com.elearning.client.network.response.MataKuliahResponse;
-
 
 public interface KelasView {
 
@@ -12,5 +11,5 @@ public interface KelasView {
     void hideProgress();
     void statusSuccess(String message);
     void statusError(String message);
-    void setListBarang(MataKuliahResponse barangResponse);
+    void setListBarang(MataKuliahResponse mataKuliahResponse);
 }

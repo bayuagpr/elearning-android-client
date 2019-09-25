@@ -1,4 +1,5 @@
-package com.elearning.client.view.search;
+package com.elearning.client.view.mahasiswa.search;
+
 
 
 import com.elearning.client.network.ApiClient;
@@ -29,8 +30,8 @@ public class SearchPresenter {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableObserver<KelasResponse>(){
                             @Override
-                            public void onNext(KelasResponse penjualanResponse) {
-                                view.statusSuccess(penjualanResponse);
+                            public void onNext(KelasResponse kelasResponse) {
+                                view.statusSuccess(kelasResponse);
                             }
 
                             @Override
