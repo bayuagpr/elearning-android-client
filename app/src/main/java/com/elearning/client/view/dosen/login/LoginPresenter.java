@@ -30,7 +30,7 @@ public class LoginPresenter {
     public void loginAuth(User user) {
         view.showProgress();
         disposable.add(
-          apiInterface.postAuth(user)
+          apiInterface.postAuthDosen(user)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableObserver<User>(){

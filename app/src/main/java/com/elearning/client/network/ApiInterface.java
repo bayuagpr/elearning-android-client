@@ -42,8 +42,11 @@ public interface ApiInterface {
 
 
     //Auth
-    @POST("credential/auth")
-    Observable<User> postAuth(@Body User user);
+    @POST("credential/auth/mahasiswa")
+    Observable<User> postAuthMahasiswa(@Body User user);
+
+    @POST("credential/auth/dosen")
+    Observable<User> postAuthDosen(@Body User user);
 
     @GET("credential/refresh")
     Observable<UserResponse> postRefresh();

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.elearning.client.R;
+import com.elearning.client.model.Dosen;
 import com.elearning.client.model.Kelas;
 import com.elearning.client.model.MataKuliah;
 import com.elearning.client.network.response.MataKuliahResponse;
@@ -23,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 public class KelasActivity extends AppCompatActivity implements KelasView {
 
     KelasPresenter presenter;
@@ -30,9 +34,9 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     SessionManager session;
     SpinnerMatkulAdapter adapter;
 
-    String id, barang_id, nama, nama_kelas, matkul_id, jumlah_harga, jumlah_barang;
+    String id, nama, nama_kelas, matkul_id, namaDosen, jumlah_barang;
 
-    @BindView(R.id.nama)
+    @BindView(R.id.matkul)
     Spinner s_nama;
     @BindView(R.id.nama_kelas)
     EditText namaKelas;
@@ -47,9 +51,11 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kelas);
         ButterKnife.bind(this);
-
+        Toolbar toolbar = findViewById(R.id.toolbarKelas);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Simpan Kelas");
         session = new SessionManager(this);
-
+        namaDosen = session.getKeyUsername();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading ...");
         presenter = new KelasPresenter(this);
@@ -61,7 +67,8 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
         s_nama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                nama = ((TextView) view.findViewById(R.id.nama)).getText().toString();
+                nama = ((TextView) view.findViewById(R.id.nama_spinner)).getText().toString();
+                matkul_id = ((TextView) view.findViewById(R.id.matkul_id_spinner)).getText().toString();
             }
 
             @Override
@@ -75,11 +82,15 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
 
 
     @OnClick(R.id.simpan) void simpan() {
+        Log.d("isi", "simpan: "+matkul_id);
         Kelas kelas = new Kelas();
         kelas.setNama(namaKelas.getText().toString());
         MataKuliah mataKuliah = new MataKuliah();
-        mataKuliah.setId(barang_id);
+        mataKuliah.setId(matkul_id);
         kelas.setMataKuliah(mataKuliah);
+        Dosen dosen = new Dosen();
+        dosen.setNidn(session.getKeyId());
+        kelas.setDosen(dosen);
         presenter.saveKelas(
                 session.getKeyToken(),
                 kelas
@@ -91,7 +102,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
         Kelas kelas = new Kelas();
         kelas.setNama(namaKelas.getText().toString());
         MataKuliah mataKuliah = new MataKuliah();
-        mataKuliah.setId(barang_id);
+        mataKuliah.setId(matkul_id);
         kelas.setMataKuliah(mataKuliah);
         presenter.updateKelas(
                 session.getKeyToken(),
@@ -134,7 +145,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     }
 
     @Override
-    public void setListBarang(MataKuliahResponse mataKuliahResponse) {
+    public void setListMatkul(MataKuliahResponse mataKuliahResponse) {
         adapter = new SpinnerMatkulAdapter(this, R.layout.spinner_matkul,
                 mataKuliahResponse.getMataKuliahList());
         s_nama.setAdapter(adapter);
@@ -158,15 +169,16 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
 
     private void setTextEditor() {
         if (id != null) {
-            getSupportActionBar().setTitle("Update data");
+            getSupportActionBar().setTitle("Update kelas");
 
             namaKelas.setText(nama_kelas);
-            s_nama.setSelection(adapter.getItemIndexById(barang_id));
+            s_nama.setSelection(adapter.getItemIndexById(matkul_id));
+            Log.d("test intent", "matkulid: "+matkul_id);
 
             content_update.setVisibility(View.VISIBLE);
             content_simpan.setVisibility(View.GONE);
         } else {
-            getSupportActionBar().setTitle("Simpan data");
+            getSupportActionBar().setTitle("Simpan kelas");
         }
     }
 

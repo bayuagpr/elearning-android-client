@@ -14,6 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme" >
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
         <activity android:name=".view.SpalshScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +35,9 @@
         <activity android:name=".view.dosen.login.LoginDosenActivityActivity"/>
         <activity android:name=".view.dosen.signup.SignupDosenActivityActivity"/>
         <activity android:name=".view.mahasiswa.signup.SignupMahasiswaActivityActivity"/>
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".view.dosen.kelas.editor.KelasActivity"/>
     </application>
 </manifest>

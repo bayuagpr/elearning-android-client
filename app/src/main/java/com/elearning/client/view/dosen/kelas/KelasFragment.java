@@ -110,7 +110,7 @@ public class KelasFragment extends Fragment implements KelasView {
                     Kelas kelas = adapter.getKelas(position);
 
                     Intent intent = new Intent(getActivity(), KelasActivity.class);
-
+                    Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
                     intent.putExtra("id", kelas.getId());
                     intent.putExtra("matkul_id", kelas.getMataKuliah().getId());
                     intent.putExtra("nama_kelas", kelas.getNama());

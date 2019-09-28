@@ -46,9 +46,9 @@ public class SpinnerMatkulAdapter extends ArrayAdapter<String> {
     }
 
 
-    public int getItemIndexById(String barang_id) {
+    public int getItemIndexById(String matkul_id) {
         for (MataKuliah matkul : this.mataKuliahList) {
-            if(matkul.getId().toString().equals(barang_id.toString())){
+            if(matkul.getId().equals(matkul_id)){
                 return this.mataKuliahList.indexOf(matkul);
             }
         }
@@ -59,11 +59,13 @@ public class SpinnerMatkulAdapter extends ArrayAdapter<String> {
         final View view = mInflater.inflate(mResource, parent, false);
 
 
-        TextView nama = (TextView) view.findViewById(R.id.nama);
+        TextView nama = view.findViewById(R.id.nama_spinner);
+        TextView matkul_id = view.findViewById(R.id.matkul_id_spinner);
+
 
         MataKuliah mataKuliah = mataKuliahList.get(position);
 
-
+        matkul_id.setText(mataKuliah.getId());
         nama.setText(mataKuliah.getNama());
 
         return view;

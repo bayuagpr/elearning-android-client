@@ -30,4 +30,7 @@ public class Dosen {
 	@SerializedName("tempat_lahir")
 	private String tempat_lahir;
 
+	@Expose
+	@SerializedName("user")
+	private User user;
 }

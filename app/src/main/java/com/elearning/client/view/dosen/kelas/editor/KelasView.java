@@ -11,5 +11,5 @@ public interface KelasView {
     void hideProgress();
     void statusSuccess(String message);
     void statusError(String message);
-    void setListBarang(MataKuliahResponse mataKuliahResponse);
+    void setListMatkul(MataKuliahResponse mataKuliahResponse);
 }

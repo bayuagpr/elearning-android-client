@@ -4,7 +4,9 @@ import android.content.SharedPreferences;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 
+import com.auth0.android.jwt.JWT;
 import com.elearning.client.view.auth.AuthStartActivityActivity;
 
 
@@ -35,6 +37,8 @@ public class SessionManager {
 
     public static final String KEY_TOKEN = "token";
 
+    public static final String KEY_NAMA = "nama";
+
 
     // Constructor
     public SessionManager(Context context) {
@@ -51,7 +55,14 @@ public class SessionManager {
         editor.putBoolean(IS_LOGIN, true);
 
         editor.putString(KEY_TOKEN, token);
-
+        String tokenReal = token.substring(7);
+        JWT jwt = new JWT(tokenReal);
+        String subject = jwt.getSubject();
+        String idUser = jwt.getClaim("id").asString();
+        String namaUser = jwt.getClaim("nama").asString();
+        editor.putString(KEY_USERNAME, subject);
+        editor.putString(KEY_ID, idUser);
+        editor.putString(KEY_NAMA, namaUser);
         // commit changes
         editor.commit();
     }
@@ -109,6 +120,10 @@ public class SessionManager {
 
     public String getKeyUsername() {
         return pref.getString(KEY_USERNAME, null);
+    }
+
+    public String getKeyNama() {
+        return pref.getString(KEY_NAMA, null);
     }
 
     public String getKeyId() {

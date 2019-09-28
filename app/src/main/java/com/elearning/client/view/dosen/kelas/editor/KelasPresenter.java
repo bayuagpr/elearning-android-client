@@ -33,7 +33,7 @@ public class KelasPresenter {
                     .subscribeWith(new DisposableObserver<MataKuliahResponse>(){
                         @Override
                         public void onNext(MataKuliahResponse mataKuliahResponse) {
-                            view.setListBarang(mataKuliahResponse);
+                            view.setListMatkul(mataKuliahResponse);
                         }
 
                         @Override
@@ -66,6 +66,7 @@ public class KelasPresenter {
                             public void onError(Throwable e) {
                                 view.hideProgress();
                                 view.statusError(e.getLocalizedMessage());
+                                e.printStackTrace();
                             }
 
                             @Override

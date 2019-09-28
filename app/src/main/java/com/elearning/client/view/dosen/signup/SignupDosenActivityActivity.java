@@ -64,7 +64,7 @@ public class SignupDosenActivityActivity extends BaseLoginActivity implements Va
         setContentView(R.layout.signup_dosen_activity);
         ButterKnife.bind(this);
         toSignIn.setOnClickListener(v -> {
-            Intent intentDosen = new Intent(SignupDosenActivityActivity.this, LoginMahasiswaMahasiswaActivityActivity.class);
+            Intent intentDosen = new Intent(SignupDosenActivityActivity.this, LoginDosenActivityActivity.class);
             startActivity(intentDosen);
         });
         signingUp.setOnClickListener(v -> validator.validate());

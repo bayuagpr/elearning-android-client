@@ -9,9 +9,14 @@
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
         <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
         <item name="android:label">@style/RobotoButtonStyle</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">true</item>
     </style>
 
-
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <style name="ToolBarStyle" parent="">
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>

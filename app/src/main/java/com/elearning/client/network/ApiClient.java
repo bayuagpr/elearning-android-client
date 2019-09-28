@@ -13,6 +13,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.google.gson.internal.bind.SqlDateTypeAdapter;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -28,11 +29,7 @@ public class ApiClient {
 
     public static Retrofit getClient(Context context) {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
-            public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-                return new Date(jsonElement.getAsJsonPrimitive().getAsLong());
-            }
-        });
+        gsonBuilder.registerTypeAdapter(Date.class, new MyDateTypeAdapter());
         Gson gson = gsonBuilder.create();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 

@@ -42,7 +42,6 @@ public class KelasPresenter {
                                 view.hideProgress();
                                 view.statusError(e.toString());
                                 Log.d("kelaspresenter", "onError: "+e.getMessage());
-                                e.printStackTrace();
                             }
 
                             @Override
