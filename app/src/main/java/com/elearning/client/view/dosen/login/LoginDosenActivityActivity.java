@@ -17,7 +17,7 @@ import com.elearning.client.model.UserLogin;
 import com.elearning.client.network.response.UserResponse;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
-import com.elearning.client.view.MainActivity;
+import com.elearning.client.view.dosen.MainActivity;
 import com.elearning.client.view.auth.AuthStartActivityActivity;
 import com.elearning.client.view.dosen.signup.SignupDosenActivityActivity;
 import com.mobsandgeeks.saripaar.ValidationError;

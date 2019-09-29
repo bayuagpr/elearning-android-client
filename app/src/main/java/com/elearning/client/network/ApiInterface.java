@@ -28,12 +28,14 @@ import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -73,12 +75,12 @@ public interface ApiInterface {
     Observable<DosenResponse> saveDosen(@Header("Authorization") String token,
                                               @Body Dosen dosen);
 
-    @POST("dosen/renewal")
+    @PUT("dosen/renewal")
     Completable updateDosen(@Header("Authorization") String token,
                                @Query("id") String id,
                                @Body Dosen dosen);
 
-    @POST("dosen/delete")
+    @DELETE("dosen/hapus")
     Completable deleteDosen(@Header("Authorization") String token,
                                @Query("id") String id);
 
@@ -99,12 +101,12 @@ public interface ApiInterface {
                                         @Body Enrollment enrollment);
 
 
-    @POST("enrollment/renewal")
+    @PUT("enrollment/renewal")
     Completable updateEnrollment(@Header("Authorization") String token,
                             @Query("id") String id,
                             @Body Enrollment enrollment);
 
-    @POST("enrollment/delete")
+    @DELETE("enrollment/hapus")
     Completable deleteEnrollment(@Header("Authorization") String token,
                             @Query("id") String id);
 
@@ -125,12 +127,12 @@ public interface ApiInterface {
                                         @Body Hasil hasil);
 
 
-    @POST("hasil/renewal")
+    @PUT("hasil/renewal")
     Completable updateHasil(@Header("Authorization") String token,
                             @Query("id") String id,
                             @Body Hasil hasil);
 
-    @POST("hasil/delete")
+    @DELETE("hasil/hapus")
     Completable deleteHasil(@Header("Authorization") String token,
                             @Query("id") String id);
 
@@ -151,12 +153,12 @@ public interface ApiInterface {
                                               @Body Fakultas fakultas);
 
 
-    @POST("fakultas/renewal")
+    @PUT("fakultas/renewal")
     Completable updateFakultas(@Header("Authorization") String token,
                                @Query("id") String id,
                                @Body Fakultas fakultas);
 
-    @POST("fakultas/delete")
+    @DELETE("fakultas/hapus")
     Completable deleteFakultas(@Header("Authorization") String token,
                                @Query("id") String id);
 
@@ -177,12 +179,12 @@ public interface ApiInterface {
                                               @Body Jurusan jurusan);
 
 
-    @POST("jurusan/renewal")
+    @PUT("jurusan/renewal")
     Completable updateJurusan(@Header("Authorization") String token,
                                @Query("id") String id,
                                @Body Jurusan jurusan);
 
-    @POST("jurusan/delete")
+    @DELETE("jurusan/hapus")
     Completable deleteJurusan(@Header("Authorization") String token,
                                @Query("id") String id);
 
@@ -207,12 +209,12 @@ public interface ApiInterface {
                                             @Body Kelas kelas);
 
 
-    @POST("kelas/renewal")
+    @PUT("kelas/renewal")
     Completable updateKelas(@Header("Authorization") String token,
                               @Query("id") String id,
                             @Body Kelas kelas);
 
-    @POST("kelas/delete")
+    @DELETE("kelas/hapus")
     Completable deleteKelas(@Header("Authorization") String token,
                               @Query("id") String id);
 
@@ -233,12 +235,12 @@ public interface ApiInterface {
                                         @Body MataKuliah mataKuliah);
 
 
-    @POST("matakuliah/renewal")
+    @PUT("matakuliah/renewal")
     Completable updateMataKuliah(@Header("Authorization") String token,
                             @Query("id") String id,
                                  @Body MataKuliah mataKuliah);
 
-    @POST("matakuliah/delete")
+    @DELETE("matakuliah/hapus")
     Completable deleteMataKuliah(@Header("Authorization") String token,
                             @Query("id") String id);
 
@@ -259,12 +261,12 @@ public interface ApiInterface {
                                                   @Body Materi materi);
 
 
-    @POST("materi/renewal")
+    @PUT("materi/renewal")
     Completable updateMateri(@Header("Authorization") String token,
                                  @Query("id") String id,
                                  @Body Materi materi);
 
-    @POST("materi/delete")
+    @DELETE("materi/hapus")
     Completable deleteMateri(@Header("Authorization") String token,
                                  @Query("id") String id);
 
@@ -285,12 +287,12 @@ public interface ApiInterface {
                                                   @Body Soal soal);
 
 
-    @POST("soal/renewal")
+    @PUT("soal/renewal")
     Completable updateSoal(@Header("Authorization") String token,
                                  @Query("id") String id,
                                  @Body Soal soal);
 
-    @POST("soal/delete")
+    @DELETE("soal/hapus")
     Completable deleteSoal(@Header("Authorization") String token,
                                  @Query("id") String id);
 

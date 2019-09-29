@@ -1,4 +1,4 @@
-package com.elearning.client.view.mahasiswa.search;
+package com.elearning.client.view.dosen.search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 
 import com.elearning.client.R;
 import com.elearning.client.model.Kelas;
@@ -112,7 +111,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public void statusSuccess(KelasResponse kelasResponse) {
-        adapter = new KelasAdapter(kelasResponse.getKelasList());
+        adapter = new KelasAdapter(kelasResponse.getKelasListCari());
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,

@@ -1,4 +1,4 @@
-package com.elearning.client.view.mahasiswa.search;
+package com.elearning.client.view.dosen.search;
 
 import android.content.Context;
 

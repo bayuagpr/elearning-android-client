@@ -39,5 +39,10 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".view.dosen.kelas.editor.KelasActivity"/>
+        <activity android:name=".view.mahasiswa.search.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
     </application>
 </manifest>

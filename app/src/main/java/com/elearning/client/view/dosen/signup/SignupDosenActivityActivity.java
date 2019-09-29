@@ -16,7 +16,7 @@ import com.elearning.client.model.Role;
 import com.elearning.client.model.User;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
-import com.elearning.client.view.MainActivity;
+import com.elearning.client.view.dosen.MainActivity;
 import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
 import com.elearning.client.view.dosen.login.LoginPresenter;
 import com.elearning.client.view.mahasiswa.login.LoginMahasiswaMahasiswaActivityActivity;

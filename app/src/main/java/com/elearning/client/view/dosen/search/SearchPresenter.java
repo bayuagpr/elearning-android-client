@@ -1,8 +1,6 @@
-package com.elearning.client.view.mahasiswa.search;
+package com.elearning.client.view.dosen.search;
 
 
-
-import android.util.Log;
 
 import com.elearning.client.model.Kelas;
 import com.elearning.client.network.ApiClient;

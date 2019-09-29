@@ -15,4 +15,7 @@ public class KelasResponse {
     @Expose
     @SerializedName("content")
     List<Kelas> kelasList;
+
+
+    List<Kelas> kelasListCari;
 }

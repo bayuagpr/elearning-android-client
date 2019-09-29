@@ -56,6 +56,7 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return kelasList.size();
+
+        return null!=kelasList?kelasList.size():0;
     }
 }
