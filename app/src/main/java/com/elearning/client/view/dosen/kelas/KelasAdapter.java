@@ -17,6 +17,7 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.ViewHolder> 
 
     List<Kelas> kelasList;
 
+
     public KelasAdapter(List<Kelas> kelasList) {
         this.kelasList = kelasList;
     }

@@ -194,13 +194,21 @@ public interface ApiInterface {
                                           @Query("page") Integer page,
                                           @Query("size") Integer size);
 
+    @GET("kelas/tampilkanSemua")
+    Observable<KelasResponse> getAllKelasDosen(@Header("Authorization") String token,
+                                               @Query("id") String id,
+                                          @Query("page") Integer page,
+                                          @Query("size") Integer size);
+
     @GET("kelas/tampilkan")
     Observable<KelasResponse> getOneKelas(@Header("Authorization") String token,
                                               @Query("id") String id);
 
     @GET("kelas/tampilkan/{nama}")
     Observable<KelasResponse> getNamaKelas(@Header("Authorization") String token,
-                                          @Path("nama") String nama);
+                                          @Path("nama") String nama,
+                                           @Query("page") Integer page,
+                                           @Query("size") Integer size);
 
 
 

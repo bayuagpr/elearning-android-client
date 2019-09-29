@@ -23,10 +23,10 @@ public class SearchPresenter {
         disposable = new CompositeDisposable();
     }
 
-    public void getSearch(String token, String nama) {
+    public void getSearch(String token, String nama, Integer page) {
         view.showProgress();
         disposable.add(
-                apiInterface.getNamaKelas(token, nama)
+                apiInterface.getNamaKelas(token, nama, page, 10)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableObserver<KelasResponse>(){

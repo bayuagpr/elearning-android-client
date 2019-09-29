@@ -74,7 +74,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     @OnClick(R.id.search) void search() {
         presenter.getSearch(
                 session.getKeyToken(),
-                et_searchText.getText().toString()
+                et_searchText.getText().toString(),
+                0
         );
     }
 

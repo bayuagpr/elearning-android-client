@@ -25,10 +25,10 @@ public class KelasPresenter {
         disposable = new CompositeDisposable();
     }
 
-    public void getKelas(String token, Integer page) {
+    public void getKelas(String token,String id, Integer page) {
         view.showProgress();
         disposable.add(
-                apiInterface.getAllKelas(token, page, 10)
+                apiInterface.getAllKelasDosen(token ,id,page, 10)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableObserver<KelasResponse>(){

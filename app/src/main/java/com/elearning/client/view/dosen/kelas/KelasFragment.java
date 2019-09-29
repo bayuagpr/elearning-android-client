@@ -75,10 +75,10 @@ public class KelasFragment extends Fragment implements KelasView {
 
         session = new SessionManager(getActivity());
         presenter = new KelasPresenter(this);
-        presenter.getKelas(session.getKeyToken(), 0);
+        presenter.getKelas(session.getKeyToken(), session.getKeyId(),0);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        swipe.setOnRefreshListener(() -> presenter.getKelas(session.getKeyToken(), 0));
+        swipe.setOnRefreshListener(() -> presenter.getKelas(session.getKeyToken(),session.getKeyId(), 0));
 
         return x;
 
@@ -129,9 +129,9 @@ public class KelasFragment extends Fragment implements KelasView {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_ADD && resultCode == RESULT_OK) {
-            presenter.getKelas(session.getKeyToken(), 0);
+            presenter.getKelas(session.getKeyToken(), session.getKeyId(),0);
         } else if (requestCode == REQUEST_UPDATE && resultCode == RESULT_OK) {
-            presenter.getKelas(session.getKeyToken(), 0);
+            presenter.getKelas(session.getKeyToken(), session.getKeyId(),0);
         }
     }
 
