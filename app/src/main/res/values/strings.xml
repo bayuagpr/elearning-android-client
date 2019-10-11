@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LEARNSEA</string>
+    <string name="app_name">LearnSea</string>
     <string name="app_pref">Pengaturan</string>
 
 
@@ -28,11 +28,10 @@
     <string name="title_activity_search">SearchActivity</string>
 
     <!-- Ukuran Kategori arrays -->
-    <string-array name="ukuran_arrays">
-        <item>XXL</item>
-        <item>XL</item>
-        <item>L</item>
-        <item>M</item>
-        <item>S</item>
+    <string-array name="tipe_soal_arrays">
+        <item>Kuis</item>
+        <item>Tugas</item>
     </string-array>
+
+
 </resources>

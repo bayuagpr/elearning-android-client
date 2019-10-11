@@ -25,9 +25,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
-                android:text="LEARNSEA"
+                android:text="LearnSea"
                 android:textColor="#fff"
-                android:textSize="35sp" />
+                android:textSize="45sp" />
 
 
 
@@ -151,7 +151,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:layout_below="@+id/txt_message"
                         android:id="@+id/itemdosen"
                         android:layout_width="match_parent"
@@ -195,7 +195,7 @@
                             </FrameLayout>
 
                         </RelativeLayout>
-                    </android.support.v7.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
@@ -209,7 +209,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:layout_below="@+id/txt_message"
                         android:id="@+id/item1"
                         android:layout_width="match_parent"
@@ -255,7 +255,7 @@
                             </FrameLayout>
 
                         </RelativeLayout>
-                    </android.support.v7.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 

@@ -1,7 +1,7 @@
 package com.elearning.client.view.mahasiswa.kelas;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +31,6 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.ViewHolder> 
 
             nama = itemView.findViewById(R.id.nama_kelas);
             dosen = itemView.findViewById(R.id.nama_dosen);
-            lihatBtn = itemView.findViewById(R.id.button_lihat);
         }
     }
 

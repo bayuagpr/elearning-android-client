@@ -25,6 +25,10 @@ public class Materi implements Serializable{
   private String deskripsi;
 
   @Expose
+  @SerializedName("attachment")
+  private String attachment;
+
+  @Expose
   @SerializedName("kelas")
   private Kelas kelas;
 }

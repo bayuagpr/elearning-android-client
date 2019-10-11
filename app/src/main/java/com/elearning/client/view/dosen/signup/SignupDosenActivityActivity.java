@@ -16,10 +16,8 @@ import com.elearning.client.model.Role;
 import com.elearning.client.model.User;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
-import com.elearning.client.view.dosen.MainActivity;
+import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
-import com.elearning.client.view.dosen.login.LoginPresenter;
-import com.elearning.client.view.mahasiswa.login.LoginMahasiswaMahasiswaActivityActivity;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
@@ -58,6 +56,7 @@ public class SignupDosenActivityActivity extends BaseLoginActivity implements Va
     SessionManager sessionManager;
     SignupPresenter presenter;
     Validator validator;
+    String nidn ,email ,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,9 +91,9 @@ public class SignupDosenActivityActivity extends BaseLoginActivity implements Va
     }
     private void userSignup() {
 
-        String nidn = idInput.getText().toString();
-        String email = usernameInput.getText().toString();
-        String password = passConfirm.getText().toString();
+         nidn = idInput.getText().toString();
+         email = usernameInput.getText().toString();
+         password = passConfirm.getText().toString();
 
         User user = new User();
         user.setId(nidn);
@@ -113,14 +112,20 @@ public class SignupDosenActivityActivity extends BaseLoginActivity implements Va
         sessionManager.createLoginSession(
                 "Bearer " + tokenResponse
         );
-        finish();
-        Intent intent = new Intent(SignupDosenActivityActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignupDosenActivityActivity.this, InitDosenActivityActivity.class);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
 
     @Override
     public void statusError(String message) {
         Log.d("Error", "statusError: " + message);
+    }
+
+    @Override
+    public void afterSubmitDosen() {
+
     }
 
     @Override

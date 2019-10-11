@@ -20,6 +20,7 @@ import com.elearning.client.network.response.KelasResponse;
 import com.elearning.client.network.response.MataKuliahResponse;
 import com.elearning.client.network.response.MateriResponse;
 import com.elearning.client.network.response.SoalResponse;
+import com.elearning.client.network.response.UploadFileResponse;
 import com.elearning.client.network.response.UserResponse;
 
 
@@ -89,7 +90,17 @@ public interface ApiInterface {
     Observable<EnrollmentResponse> getAllEnrollment(@Header("Authorization") String token,
                                                     @Query("page") Integer page,
                                                     @Query("size") Integer size);
-
+    @GET("enrollment/tampilkanSemuaKelas")
+    Observable<EnrollmentResponse> getAllEnrollKelas(@Header("Authorization") String token,
+                                              @Query("id") String id,
+                                                @Query("disetujui") Boolean disetujui,
+                                              @Query("page") Integer page,
+                                              @Query("size") Integer size);
+    @GET("enrollment/tampilkanSemuaMahasiswa")
+    Observable<EnrollmentResponse> getAllEnrollMahasiswa(@Header("Authorization") String token,
+                                                   @Query("id") String id,
+                                                   @Query("page") Integer page,
+                                                   @Query("size") Integer size);
     @GET("enrollment/tampilkan")
     Observable<EnrollmentResponse> getOneEnrollment(@Header("Authorization") String token,
                                           @Query("id") String id);
@@ -115,7 +126,17 @@ public interface ApiInterface {
     Observable<HasilResponse> getAllHasil(@Header("Authorization") String token,
                                           @Query("page") Integer page,
                                           @Query("size") Integer size);
-
+    @GET("hasil/tampilkanSemuaSoal")
+    Observable<HasilResponse> getAllHasilSoal(@Header("Authorization") String token,
+                                             @Query("id") String id,
+                                             @Query("status") String status,
+                                             @Query("page") Integer page,
+                                             @Query("size") Integer size);
+    @GET("hasil/tampilkanSemuaMahasiswa")
+    Observable<HasilResponse> getAllHasilMahasiswa(@Header("Authorization") String token,
+                                             @Query("id") String id,
+                                             @Query("page") Integer page,
+                                             @Query("size") Integer size);
     @GET("hasil/tampilkan")
     Observable<HasilResponse> getOneHasil(@Header("Authorization") String token,
                                           @Query("id") String id);
@@ -258,6 +279,12 @@ public interface ApiInterface {
                                             @Query("page") Integer page,
                                             @Query("size") Integer size);
 
+    @GET("materi/tampilkanSemua")
+    Observable<MateriResponse> getAllKelasMateri(@Header("Authorization") String token,
+                                               @Query("id") String id,
+                                               @Query("page") Integer page,
+                                               @Query("size") Integer size);
+
     @GET("materi/tampilkan")
     Observable<MateriResponse> getOneMateri(@Header("Authorization") String token,
                                                     @Query("id") String id);
@@ -284,6 +311,12 @@ public interface ApiInterface {
                                         @Query("page") Integer page,
                                         @Query("size") Integer size);
 
+    @GET("soal/tampilkanSemua")
+    Observable<SoalResponse> getAllKelasSoal(@Header("Authorization") String token,
+                                                 @Query("id") String id,
+                                                 @Query("page") Integer page,
+                                                 @Query("size") Integer size);
+
     @GET("soal/tampilkan")
     Observable<SoalResponse> getOneSoal(@Header("Authorization") String token,
                                                     @Query("id") String id);
@@ -306,17 +339,17 @@ public interface ApiInterface {
 
     @Multipart
     @POST("soal/uploadSoal")
-    Completable uploadSoal(@Header("Authorization") String token,
-                             @Part MultipartBody.Part file);
+    Observable<UploadFileResponse> uploadSoal(@Header("Authorization") String token,
+                                              @Part MultipartBody.Part file);
 
     @Multipart
     @POST("hasil/uploadHasil")
-    Completable uploadHasil(@Header("Authorization") String token,
+    Observable<UploadFileResponse> uploadHasil(@Header("Authorization") String token,
                            @Part MultipartBody.Part file);
 
     @Multipart
     @POST("materi/uploadMateri")
-    Completable uploadMateri(@Header("Authorization") String token,
+    Observable<UploadFileResponse> uploadMateri(@Header("Authorization") String token,
                            @Part MultipartBody.Part file);
 
 

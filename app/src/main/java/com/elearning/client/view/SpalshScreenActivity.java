@@ -2,13 +2,15 @@ package com.elearning.client.view;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 
 import com.elearning.client.R;
 import  com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.auth.AuthStartActivityActivity;
+import com.elearning.client.view.dosen.MainDosenActivity;
+import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
 
 public class SpalshScreenActivity extends AppCompatActivity {
     private SessionManager session;
@@ -21,7 +23,15 @@ public class SpalshScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent activityIntent;
             if (session.isLoggedIn()) {
-                activityIntent = new Intent(this, MainActivity.class);
+               // activityIntent = new Intent(this, MainDosenActivity.class);
+                if(session.isDosen()){
+                    activityIntent = new Intent(this, MainDosenActivity.class);
+                }else if(session.isMahasiswa()){
+                    activityIntent = new Intent(this, MainMahasiswaActivity.class);
+                }else{
+                    activityIntent = new Intent(this, AuthStartActivityActivity.class);
+                }
+
             } else {
                 activityIntent = new Intent(this, AuthStartActivityActivity.class);
             }

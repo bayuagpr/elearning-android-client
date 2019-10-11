@@ -3,11 +3,13 @@ package com.elearning.client.view.dosen.kelas;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import com.elearning.client.view.dosen.kelas.detail.KelasDetailActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,15 +24,9 @@ import com.elearning.client.utils.RecyclerItemClickListener;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.utils.SimpleDividerItemDecoration;
 import com.elearning.client.view.dosen.kelas.editor.KelasActivity;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 
-import java.lang.reflect.Type;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +43,8 @@ public class KelasFragment extends Fragment implements KelasView {
     SessionManager session;
     KelasPresenter presenter;
     KelasAdapter adapter;
+    List<Kelas> kelasList;
+    Integer page,lastPage, initPage,totalPage;
 
     private static final int REQUEST_ADD = 1;
     private static final int REQUEST_UPDATE = 2;
@@ -74,12 +72,16 @@ public class KelasFragment extends Fragment implements KelasView {
         getActivity().setTitle("Kelas ");
 
         session = new SessionManager(getActivity());
+        initPage=0;
+        page = 0;
+        kelasList = new ArrayList<>();
         presenter = new KelasPresenter(this);
-        presenter.getKelas(session.getKeyToken(), session.getKeyId(),0);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        swipe.setOnRefreshListener(() -> presenter.getKelas(session.getKeyToken(),session.getKeyId(), 0));
-
+        adapter = new KelasAdapter(kelasList);
+        adapter.setMoreDataAvailable(true);
+        onSetRecyclerView();
+        onClickRecylerView();
+        swipe.setOnRefreshListener(() -> presenter.getKelas(session.getKeyToken(),session.getKeyId(), initPage));
+        presenter.getKelas(session.getKeyToken(), session.getKeyId(),initPage);
         return x;
 
     }
@@ -101,23 +103,27 @@ public class KelasFragment extends Fragment implements KelasView {
 
     @Override
     public void statusSuccess(KelasResponse kelasResponse) {
-        Log.d("fragment sukses", kelasResponse.getKelasList().toString());
-        adapter = new KelasAdapter(kelasResponse.getKelasList());
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
-                (view, position) -> {
-                    Kelas kelas = adapter.getKelas(position);
-
-                    Intent intent = new Intent(getActivity(), KelasActivity.class);
-                    Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
-                    intent.putExtra("id", kelas.getId());
-                    intent.putExtra("matkul_id", kelas.getMataKuliah().getId());
-                    intent.putExtra("nama_kelas", kelas.getNama());
-
-                    startActivityForResult(intent, REQUEST_UPDATE);
-                }));
+        kelasList.removeAll(kelasList);
+        kelasList.addAll(kelasResponse.getKelasList());
         adapter.notifyDataSetChanged();
+        lastPage = kelasResponse.getTotalPages()-1;
+       totalPage = kelasResponse.getTotalPages();
+    }
+
+    @Override
+    public void loadMore(KelasResponse kelasResponse) {
+        //kelasList.remove(kelasList.size()-1);
+        List<Kelas> result = kelasResponse.getKelasList();
+        page= kelasResponse.getNumber()+1;
+
+        Log.d("load more", "result size"+result.size());
+        if (result.size() > 0) {
+            kelasList.addAll(result);
+        } else {
+            adapter.setMoreDataAvailable(false);
+            Toast.makeText(getActivity(), "No more data", Toast.LENGTH_SHORT).show();
+        }
+        adapter.notifyDataChanged();
     }
 
     @Override
@@ -134,7 +140,60 @@ public class KelasFragment extends Fragment implements KelasView {
             presenter.getKelas(session.getKeyToken(), session.getKeyId(),0);
         }
     }
+    void onSetRecyclerView() {
 
+        adapter.setLoadMoreListener(() -> recyclerView.post(() -> {
+            if(totalPage.equals(1)){
+                if(page<lastPage){
+                    int index = kelasList.size();
+                    //kelasList.add(new Kelas("load"));
+                    //adapter.notifyItemInserted(kelasList.size()-1);
+                    if(page.equals(0)){
+                        page =index/10;
+                    }
+                    Log.d("load more", "page: "+page);
+                    presenter.getKelasMore(session.getKeyToken(), session.getKeyId(),page);}
+                else {
+                    adapter.setMoreDataAvailable(false);
+                    Toast.makeText(getActivity(), "No more data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                if(page<=lastPage){
+                    int index = kelasList.size();
+                    //kelasList.add(new Kelas("load"));
+                    //adapter.notifyItemInserted(kelasList.size()-1);
+                    if(page.equals(0)){
+                        page =index/10;
+                    }
+                    Log.d("load more", "page: "+page);
+                    presenter.getKelasMore(session.getKeyToken(), session.getKeyId(),page);}
+                else {
+                    adapter.setMoreDataAvailable(false);
+                    Toast.makeText(getActivity(), "No more data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+        }));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+    }
+
+    void onClickRecylerView() {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
+                (view, position) -> {
+                    Kelas kelas = adapter.getKelas(position);
+
+                    Intent intent = new Intent(getActivity(), KelasDetailActivity.class);
+                    Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
+                    intent.putExtra("id", kelas.getId());
+                    intent.putExtra("matkul_id", kelas.getMataKuliah().getId());
+                    intent.putExtra("nama_kelas", kelas.getNama());
+                    startActivityForResult(intent,REQUEST_UPDATE);
+                }));
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentFl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarKelas"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminate="true"
+        app:mpb_progressStyle="horizontal"
+        app:mpb_useIntrinsicPadding="false"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+    <ScrollView
+        android:id="@+id/contentSv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarKelas"
+        app:layout_constraintBottom_toTopOf="@id/content_simpan_materi"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/judulDinilaiTil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Judul">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/judulMateri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:lines="1"
+                    android:textAppearance="@style/TextAppearance.InputField"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/deskripsiDinilaiTil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/judulDinilaiTil"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Deskripsi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/deskripsiMateri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="5"
+                    android:minLines="1"
+                    android:autoLink="all"
+                    android:maxLines="10"
+                    android:scrollbars="none"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:textAppearance="@style/TextAppearance.InputField"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <FrameLayout-->
+<!--                android:id="@+id/activityMainPdfView"-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/titleTil"-->
+<!--                android:layout_marginStart="@dimen/margin_small"-->
+<!--                android:layout_marginEnd="@dimen/margin_normal"-->
+<!--                android:layout_marginTop="24dp"/>-->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activityMainPdfViewCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/deskripsiDinilaiTil"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/activityMainPdfViewTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Lihat Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/activityMainPdfViewIconIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/changePdfCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activityMainPdfViewCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/changePdfTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Ganti Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/changePdfIconIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/berkasDinilaiCv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/deskripsiDinilaiTil"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/berkasDinilaiTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Unggah Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/timeIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/fileUploaded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berkasDinilaiCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
+            <TextView
+                android:id="@+id/fileUpdate"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/changePdfCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/content_simpan_materi"
+        android:layout_weight="1"
+        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtnMateri"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:elevation="@dimen/elevation_large"
+            android:enabled="true"
+            android:text="Simpan"
+            android:textAppearance="@style/TextAppearance.Button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_update_materi"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/contentSv">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hapusMateri"
+            android:text="Hapus"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:layout_width="0dip"
+            android:elevation="@dimen/elevation_large"
+            android:enabled="true"
+            android:textAppearance="@style/TextAppearance.Button"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/updateMateri"
+            android:text="Update"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight=".7"
+            android:layout_width="0dip"
+            android:elevation="@dimen/elevation_large"
+            android:enabled="true"
+            android:textAppearance="@style/TextAppearance.Button"/>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

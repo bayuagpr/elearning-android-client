@@ -25,10 +25,10 @@ public class MataKuliah{
 
   @Expose
   @SerializedName("tipe")
-  private TipeMataKuliah tipe;
+  private String tipe;
 
   @Expose
   @SerializedName("term")
-  private TermMataKuliah term;
+  private String term;
 
 }

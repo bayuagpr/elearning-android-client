@@ -52,6 +52,33 @@ public class KelasPresenter {
         );
     }
 
+    public void getKelasMore(String token,String id, Integer page) {
+        view.showProgress();
+        disposable.add(
+                apiInterface.getAllKelasDosen(token ,id,page, 10)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<KelasResponse>(){
+                            @Override
+                            public void onNext(KelasResponse kelasResponse) {
+                                view.loadMore(kelasResponse);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                view.hideProgress();
+                                view.statusError(e.toString());
+                                Log.d("kelaspresenter", "onError: "+e.getMessage());
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                view.hideProgress();
+                            }
+                        })
+        );
+    }
+
     public void detachView() {
         disposable.dispose();
     }

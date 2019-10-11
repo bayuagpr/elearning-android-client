@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.dosen.signup.SignupDosenActivityActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="273dp"
+            android:background="@drawable/blue_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/clip_sign_up"/>
+
+
+
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="32dp"
+                android:gravity="center_horizontal"
+                android:text="Isi Data Diri"
+                android:textColor="#333232"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|bottom"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="62dp"
+                    android:layout_marginRight="62dp"
+                    android:layout_marginTop="36.7dp"
+                    android:background="@drawable/blue_border_rounded_cornwe">
+
+                    <!-- INPUT -->
+                    <EditText
+                        android:id="@+id/id_input"
+                        android:layout_toRightOf="@+id/id_icon"
+                        android:hint="Nama"
+                        android:textSize="12sp"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:maxLines="1"
+                        android:inputType="textCapWords"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <!-- ICON -->
+
+
+                </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/content_update"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:layout_weight="1"
+            android:weightSum="1.0"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_marginBottom="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@drawable/blue_border_rounded_cornwe">
+
+                <!-- INPUT -->
+                <EditText
+                    android:id="@+id/passTempat"
+                    android:layout_toRightOf="@+id/icon"
+                    android:hint="Tempat Lahir"
+                    android:textSize="12sp"
+                    android:paddingLeft="17dp"
+                    android:paddingTop="15dp"
+                    android:maxLines="1"
+                    android:inputType="textCapWords"
+                    android:paddingBottom="15dp"
+                    android:maxLength="20"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/blue_border_rounded_cornwe">
+
+                <!-- INPUT -->
+                <TextView
+                    android:id="@+id/passTanggal"
+                    android:layout_toRightOf="@+id/icon"
+                    android:hint="Tanggal Lahir"
+                    android:textSize="12sp"
+                    android:paddingLeft="17dp"
+                    android:paddingTop="15dp"
+                    android:maxLines="1"
+                    android:inputType="textCapWords"
+                    android:paddingBottom="15dp"
+                    android:maxLength="20"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <TextView
+                android:id="@+id/username_input"
+                android:layout_toRightOf="@+id/username_icon"
+                android:hint="Jurusan"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textCapWords"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- ICON -->
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <EditText
+                android:id="@+id/pass"
+                android:layout_toRightOf="@+id/icon"
+                android:hint="Fakultas"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:maxLines="1"
+                android:inputType="textCapWords"
+                android:paddingBottom="15dp"
+                android:maxLength="20"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <EditText
+                android:id="@+id/passConfirm"
+                android:layout_toRightOf="@+id/iconConfirm"
+                android:hint="Alamat"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:maxLines="1"
+                android:inputType="textCapSentences"
+                android:paddingBottom="15dp"
+                android:maxLength="20"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- ICON -->
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/signingUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="18.7dp"
+            android:text="Submit"
+            android:background="@drawable/blue_fill__rounded_color"
+            />
+
+        <!--        <customfonts.MyTextView_Poppins_Medium-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textSize="10.5sp"-->
+        <!--            android:textColor="#1566e0"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:text="FORGOT PASSWORD ?"-->
+        <!--            />-->
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="35dp"
+            android:orientation="horizontal">
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="26.7dp"-->
+            <!--                android:layout_height="26.7dp"-->
+            <!--                android:src="@drawable/fb"/>-->
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="26.7dp"-->
+            <!--                android:layout_height="26.7dp"-->
+            <!--                android:layout_marginRight="20dp"-->
+            <!--                android:layout_marginLeft="20dp"-->
+            <!--                android:src="@drawable/instagram"/>-->
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="26.7dp"-->
+            <!--                android:layout_height="26.7dp"-->
+            <!--                android:layout_marginRight="20dp"-->
+            <!--                android:src="@drawable/twitter"/>-->
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="26.7dp"-->
+            <!--                android:layout_height="26.7dp"-->
+            <!--                android:src="@drawable/linkedin"/>-->
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

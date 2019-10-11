@@ -2,10 +2,10 @@ package com.elearning.client.view.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.widget.FrameLayout;
 
 import com.elearning.client.R;

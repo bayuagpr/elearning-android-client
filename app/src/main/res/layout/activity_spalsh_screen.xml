@@ -28,9 +28,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LEARNSEA"
+                android:text="LearnSea"
                 android:textColor="@color/white"
-                android:textSize="31.3sp" />
+                android:textSize="45.3sp" />
 
 
         </LinearLayout>

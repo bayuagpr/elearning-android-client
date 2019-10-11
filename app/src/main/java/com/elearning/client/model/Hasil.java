@@ -33,7 +33,7 @@ public class Hasil{
 
   @Expose
   @SerializedName("status")
-  private StatusHasil status;
+  private String status;
 
   @Expose
   @SerializedName("mahasiswa")
@@ -42,4 +42,13 @@ public class Hasil{
   @Expose
   @SerializedName("soal")
   private Soal soal;
+
+
+  @Expose
+  @SerializedName("ternilai")
+  private boolean ternilai;
+
+  public boolean isTernilai() {
+    return ternilai;
+  }
 }

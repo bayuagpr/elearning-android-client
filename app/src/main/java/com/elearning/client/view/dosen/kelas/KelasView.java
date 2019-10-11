@@ -11,5 +11,6 @@ public interface KelasView {
     void hideProgress();
     void statusSuccess(KelasResponse kelasResponse);
     void statusError(String message);
+    void loadMore(KelasResponse supplierResponse);
 
 }

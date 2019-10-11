@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#F4F5F7">
+
+    <com.elearning.client.utils.StickyScrollView
+        android:id="@+id/scrollsticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:elevation="6dp">
+    <LinearLayout
+        android:background="#fff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="#00000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="sticky">
+                <androidx.appcompat.widget.Toolbar
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="10dp"
+                    android:elevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/backToList"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_left_arrow" />
+
+                    <LinearLayout
+                        android:layout_marginRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right">
+
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.Toolbar>
+            </LinearLayout>
+
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:background="@drawable/bottom_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:tag="sticky">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="Comming Soon"
+                    android:textColor="#606674"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tvaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="Comming Soon"
+                    android:textColor="#adb3c0"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btnAtur"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:elevation="5dp"
+                            android:padding="8dp"
+                            android:layout_margin="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="5dp"
+                            android:text="Pengaturan Kelas"
+                            android:background="@color/blue_dark"
+                            android:textColor="#fff"
+                            android:textSize="15dp" />
+                        <Button
+                            android:id="@+id/btnAnggota"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:elevation="5dp"
+                            android:padding="8dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="15dp"
+                            android:text="ANGGOTA KELAS"
+                            android:background="@color/blue_dark"
+                            android:textColor="#fff"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.fxn.BubbleTabBar
+                    android:id="@+id/bubbleTabBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="7dp"
+                    app:bubbletab_menuResource="@menu/list"
+                    app:bubbletab_disabled_icon_color="@color/colorPrimaryDark"
+                    app:bubbletab_horizontal_padding="20dp"
+                    app:bubbletab_vertical_padding="10dp">
+                </com.fxn.BubbleTabBar>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--<LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shadow_down">
+
+        </LinearLayout>-->
+
+
+
+
+
+    </LinearLayout>
+    </com.elearning.client.utils.StickyScrollView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/scrollsticky"/>
+</RelativeLayout>

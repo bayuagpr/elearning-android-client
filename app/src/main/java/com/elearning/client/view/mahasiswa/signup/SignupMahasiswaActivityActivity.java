@@ -16,8 +16,7 @@ import com.elearning.client.model.Role;
 import com.elearning.client.model.User;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
-import com.elearning.client.view.MainActivity;
-import com.elearning.client.view.dosen.signup.SignupView;
+import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
 import com.elearning.client.view.mahasiswa.login.LoginMahasiswaMahasiswaActivityActivity;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
@@ -113,7 +112,7 @@ public class SignupMahasiswaActivityActivity extends BaseLoginActivity implement
                 "Bearer " + tokenResponse
         );
         finish();
-        Intent intent = new Intent(SignupMahasiswaActivityActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignupMahasiswaActivityActivity.this, MainMahasiswaActivity.class);
         startActivity(intent);
     }
 

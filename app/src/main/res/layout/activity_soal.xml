@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentFl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSoal"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminate="true"
+        app:mpb_progressStyle="horizontal"
+        app:mpb_useIntrinsicPadding="false"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+    <ScrollView
+        android:id="@+id/contentSvSoal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarSoal"
+        app:layout_constraintBottom_toTopOf="@id/content_simpan_soal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/judulSoalTil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Judul">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/judulSoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:lines="1"
+                    android:textAppearance="@style/TextAppearance.InputField"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descSoalTil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/judulSoalTil"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Deskripsi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descSoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="2"
+                    android:minLines="1"
+                    android:autoLink="all"
+                    android:maxLines="3"
+                    android:scrollbars="none"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:textAppearance="@style/TextAppearance.InputField"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipe Soal"
+                    android:textColor="@color/grey_dark"
+                    android:layout_marginTop="26.7dp"
+                    android:textSize="15sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/tipeSoalSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dateCv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/uploadSoalCv"
+                app:layout_constraintTop_toBottomOf="@id/datePickedSoal"
+                 app:layout_constraintVertical_chainStyle="spread_inside"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dateTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Tenggat Waktu"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/dateIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/avd_today"
+                        android:contentDescription="Date"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dateGantiCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/lihatSoalCv"
+                app:layout_constraintTop_toBottomOf="@id/datePickedSoal"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dateGantiTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Tenggat Waktu"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/dateGantiIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/avd_today"
+                        android:contentDescription="Date"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/uploadSoalCv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/dateCv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/datePickedSoal"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/uploadSoalTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Pilih Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/timeIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/lihatSoalCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/dateGantiCv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/datePickedSoal"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/lihatSoalTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Lihat Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/gantitimeIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/changePdfSoalCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dateGantiCv"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/changePdfSoalTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Ganti Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/changePdfIconSoalIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/fileUploadedSoal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dateCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
+            <TextView
+                android:id="@+id/datePickedSoal"
+                android:text="Belum ditentukan tenggat waktunya"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descSoalTil"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="2"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                style="@style/Widget.HowMuch.InputTextView" />
+            <TextView
+                android:id="@+id/fileUpdateSoal"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/changePdfSoalCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+    <LinearLayout
+        android:id="@+id/content_simpan_soal"
+        android:layout_weight="1"
+        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtnSoal"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:elevation="@dimen/elevation_large"
+            android:enabled="true"
+            android:text="Simpan"
+            android:textAppearance="@style/TextAppearance.Button" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/content_update_soal"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/contentSvSoal">
+
+        <Button
+            android:id="@+id/hapusSoal"
+            android:text="Hapus"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:layout_width="0dip"
+            android:textAlignment="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/blue_dark"
+            android:textColor="#fff"/>
+
+        <Button
+            android:id="@+id/updateSoal"
+            android:text="Update"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight=".7"
+            android:layout_width="0dip"
+            android:textAlignment="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/blue_dark"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

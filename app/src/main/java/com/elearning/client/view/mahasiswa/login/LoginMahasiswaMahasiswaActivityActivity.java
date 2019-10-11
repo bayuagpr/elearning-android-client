@@ -13,10 +13,9 @@ import android.widget.Toast;
 
 import com.elearning.client.R;
 import com.elearning.client.model.User;
-import com.elearning.client.model.UserLogin;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
-import com.elearning.client.view.MainActivity;
+import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
 import com.elearning.client.view.auth.AuthStartActivityActivity;
 import com.elearning.client.view.mahasiswa.signup.SignupMahasiswaActivityActivity;
 import com.mobsandgeeks.saripaar.ValidationError;
@@ -133,7 +132,7 @@ public class LoginMahasiswaMahasiswaActivityActivity extends BaseLoginActivity i
                 "Bearer " + tokenResponse
         );
         finish();
-        Intent intent = new Intent(LoginMahasiswaMahasiswaActivityActivity.this, MainActivity.class);
+        Intent intent = new Intent(LoginMahasiswaMahasiswaActivityActivity.this, MainMahasiswaActivity.class);
         startActivity(intent);
     }
 

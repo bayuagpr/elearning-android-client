@@ -16,4 +16,19 @@ public class SoalResponse {
     @SerializedName("content")
     List<Soal> soalList;
 
+    @Expose
+    @SerializedName("last")
+    Boolean last;
+
+    @Expose
+    @SerializedName("totalPages")
+    Integer totalPages;
+
+    @Expose
+    @SerializedName("number")
+    Integer number;
+
+    @Expose
+    @SerializedName("totalElements")
+    Integer totalElements;
 }

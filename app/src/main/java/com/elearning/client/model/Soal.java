@@ -25,11 +25,11 @@ public class Soal {
   private String attachment;
   @Expose
   @SerializedName("tipe")
-  private TipeSoal tipe;
+  private String tipe;
 
   @Expose
   @SerializedName("dueDate")
-  private Date dueDate;
+  private long dueDate;
 
   @Expose
   @SerializedName("kelas")

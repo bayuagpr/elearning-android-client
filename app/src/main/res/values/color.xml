@@ -4,14 +4,11 @@
     <color name="grey_lighter">#E0E0E0</color>
     <color name="grey_light">#9E9E9E</color>
     <color name="grey_dark">#424242</color>
-    <color name="red">#2ecc71</color>
     <color name="red_dark">#27ae60</color>
     <color name="blue_light">#03A9F4</color>
     <color name="blue">#1E88E5</color>
     <color name="blue_dark">#0052CC</color>
     <color name="white_dirty">#F4F5F7</color>
-    <color name="white">#FFF</color>
-    <color name="yellow">#f1c40f</color>
     <color name="fbutton_color_turquoise">#1abc9c</color>
     <color name="fbutton_color_green_sea">#16a085</color>
     <color name="fbutton_color_emerald">#2ecc71</color>

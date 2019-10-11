@@ -15,6 +15,15 @@ public class Enrollment{
     @SerializedName("disetujui")
     private boolean disetujui;
 
+    @Expose
+    @SerializedName("kelas")
+    private Kelas kelas;
+
+
+    @Expose
+    @SerializedName("mahasiswa")
+    private Mahasiswa mahasiswa;
+
  public boolean getDisetujui() {
   // TODO Auto-generated method stub
   return disetujui;

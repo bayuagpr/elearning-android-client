@@ -16,7 +16,7 @@ public class Role{
 
   @Expose
   @SerializedName("nama")
-  private NamaRole nama;
+  private String nama;
 
   @Expose
   @SerializedName("deskripsi")

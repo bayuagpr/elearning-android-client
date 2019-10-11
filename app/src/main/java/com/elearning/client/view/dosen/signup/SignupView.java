@@ -10,5 +10,6 @@ public interface SignupView {
         void hideProgress();
         void statusSuccess(String tokenResponse);
         void statusError(String message);
+        void afterSubmitDosen();
 
 }

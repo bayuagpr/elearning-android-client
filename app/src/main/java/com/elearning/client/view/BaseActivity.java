@@ -1,13 +1,12 @@
 package com.elearning.client.view;
 
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.elearning.client.R;
 import com.elearning.client.network.NetworkEvent;
 import com.elearning.client.utils.SessionManager;
-import com.elearning.client.view.auth.AuthStartActivityActivity;
 
 
 public class BaseActivity extends AppCompatActivity {

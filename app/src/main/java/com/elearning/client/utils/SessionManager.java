@@ -39,6 +39,8 @@ public class SessionManager {
 
     public static final String KEY_NAMA = "nama";
 
+    public static final String KEY_ROLE = "role";
+
 
     // Constructor
     public SessionManager(Context context) {
@@ -60,12 +62,16 @@ public class SessionManager {
         String subject = jwt.getSubject();
         String idUser = jwt.getClaim("id").asString();
         String namaUser = jwt.getClaim("nama").asString();
+        String role = jwt.getClaim("role").asString();
         editor.putString(KEY_USERNAME, subject);
         editor.putString(KEY_ID, idUser);
         editor.putString(KEY_NAMA, namaUser);
+        editor.putString(KEY_ROLE, role);
         // commit changes
         editor.commit();
     }
+
+
 
     /**
      * Check login method wil check user login status
@@ -116,6 +122,14 @@ public class SessionManager {
     // Get Login State
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
+    }
+
+    public boolean isDosen() {
+        return pref.getString(KEY_ROLE, null).contains("Dosen");
+    }
+
+    public boolean isMahasiswa() {
+        return pref.getString(KEY_ROLE, null).contains("Mahasiswa");
     }
 
     public String getKeyUsername() {

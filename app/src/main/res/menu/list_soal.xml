@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/clock_circular_outline"
+        android:title="Tepat Waktu"
+        android:checked="true"
+        android:iconTint="@color/fbutton_color_carrot"/>
+
+    <item
+        android:id="@+id/log"
+        android:icon="@drawable/contract"
+        android:title="Terlambat"
+        android:iconTint="@color/fbutton_color_emerald"/>
+</menu>

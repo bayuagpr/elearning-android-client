@@ -4,8 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +21,8 @@ import com.elearning.client.model.Kelas;
 import com.elearning.client.model.MataKuliah;
 import com.elearning.client.network.response.MataKuliahResponse;
 import com.elearning.client.utils.SessionManager;
+
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,8 +84,12 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
 
 
     @OnClick(R.id.simpan) void simpan() {
+        UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
+        String pre = "KEL";
+        String idNew = pre.concat(randomUUIDString);
         Log.d("isi", "simpan: "+matkul_id);
-        Kelas kelas = new Kelas();
+        Kelas kelas = new Kelas(idNew);
         kelas.setNama(namaKelas.getText().toString());
         MataKuliah mataKuliah = new MataKuliah();
         mataKuliah.setId(matkul_id);
@@ -99,7 +105,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     }
 
     @OnClick(R.id.update) void update() {
-        Kelas kelas = new Kelas();
+        Kelas kelas = new Kelas(id);
         kelas.setNama(namaKelas.getText().toString());
         MataKuliah mataKuliah = new MataKuliah();
         mataKuliah.setId(matkul_id);

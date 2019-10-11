@@ -15,4 +15,19 @@ public class MateriResponse {
     @Expose
     @SerializedName("content")
     List<Materi> materiList;
+    @Expose
+    @SerializedName("last")
+    Boolean last;
+
+    @Expose
+    @SerializedName("totalPages")
+    Integer totalPages;
+
+    @Expose
+    @SerializedName("number")
+    Integer number;
+
+    @Expose
+    @SerializedName("totalElements")
+    Integer totalElements;
 }

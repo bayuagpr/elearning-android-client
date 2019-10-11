@@ -3,4 +3,83 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="green">#1eb980</color>
+    <color name="lightGreen">#E8F5E9</color>
+    <color name="darkGreen">#045d56</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="amber">#FFC107</color>
+    <color name="red">#e44949</color>
+    <color name="lightRed">#E57373</color>
+
+    <color name="lightPink">#F06292</color>
+
+    <color name="transparentWhite">#99ffffff</color>
+    <color name="transparentGreen">#221eb980</color>
+
+    <color name="lightTeal">#80CBC4</color>
+    <color name="teal">#A7FFEB</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="gray1">#fafafa</color>
+    <color name="gray2">#f5f5f5</color>
+    <color name="gray3">#e0e0e0</color>
+
+    <!-- text colors-->
+    <color name="primaryText">#424242</color>
+    <color name="secondaryText">#8A424242</color>
+    <color name="disableHintText">#61424242</color>
+
+    <color name="primaryTextLight">#ffffffff</color>
+    <color name="secondaryTextLight">#B3ffffff</color>
+    <color name="disableHintTextLight">#80ffffff</color>
+    <color name="dividerLight">#1Fffffff</color>
+
+    <!-- dark translucent-->
+    <color name="scrim">#99323232</color>
+    <color name="whiteScrim">#99ffffff</color>
+
+    <!-- icon colors -->
+    <color name="activeIconLight">@color/white</color>
+    <color name="inactiveIconLight">@color/disableHintTextLight</color>
+
+    <color name="activeIcon">#424242</color>
+    <color name="inactiveIcon">#9E9E9E</color>
+
+    <color name="divider">#1F000000</color>
+
+    <color name="red400">#E57373</color>
+    <color name="pink500">#F06292</color>
+    <color name="purple500">#BA68C8</color>
+    <color name="indigo500">#7986CB</color>
+    <color name="blue500">#64B5F6</color>
+    <color name="cyan500">#4DD0E1</color>
+
+    <color name="food">#FF8A65</color>
+    <color name="health">#F06292</color>
+    <color name="home">#AED581</color>
+    <color name="transportation">#4FC3F7</color>
+    <color name="personal">#BA68C8</color>
+    <color name="utilities">#7986CB</color>
+    <color name="travel">#4DB6AC</color>
+
+    <color name="food2">#FBE9E7</color>
+    <color name="health2">#FCE4EC</color>
+    <color name="home2">#F1F8E9</color>
+    <color name="transportation2">#E1F5FE</color>
+    <color name="personal2">#F3E5F5</color>
+    <color name="utilities2">#E8EAF6</color>
+    <color name="travel2">#E0F2F1</color>
+
+    <color name="food3">#FFCCBC</color>
+    <color name="health3">#F8BBD0</color>
+    <color name="home3">#DCEDC8</color>
+    <color name="transportation3">#B3E5FC</color>
+    <color name="personal3">#E1BEE7</color>
+    <color name="utilities3">#C5CAE9</color>
+    <color name="travel3">#B2DFDB</color>
+
+    <color name="monthlyBudgetLimitPrimary">#EF5350</color>
+    <color name="monthlyBudgetLimitSecondary">#FFEBEE</color>
 </resources>
