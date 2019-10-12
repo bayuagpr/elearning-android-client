@@ -171,65 +171,6 @@
             android:background="@drawable/blue_border_rounded_cornwe">
 
             <!-- INPUT -->
-            <TextView
-                android:id="@+id/username_input"
-                android:layout_toRightOf="@+id/username_icon"
-                android:hint="Jurusan"
-                android:textSize="12sp"
-                android:paddingLeft="17dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:maxLines="1"
-                android:inputType="textCapWords"
-                android:textCursorDrawable="@drawable/cursor_color"
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!-- ICON -->
-
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="62dp"
-            android:layout_marginRight="62dp"
-            android:layout_marginTop="12.7dp"
-            android:background="@drawable/blue_border_rounded_cornwe">
-
-            <!-- INPUT -->
-            <EditText
-                android:id="@+id/pass"
-                android:layout_toRightOf="@+id/icon"
-                android:hint="Fakultas"
-                android:textSize="12sp"
-                android:paddingLeft="17dp"
-                android:paddingTop="15dp"
-                android:maxLines="1"
-                android:inputType="textCapWords"
-                android:paddingBottom="15dp"
-                android:maxLength="20"
-                android:textCursorDrawable="@drawable/cursor_color"
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="62dp"
-            android:layout_marginRight="62dp"
-            android:layout_marginTop="12.7dp"
-            android:background="@drawable/blue_border_rounded_cornwe">
-
-            <!-- INPUT -->
             <EditText
                 android:id="@+id/passConfirm"
                 android:layout_toRightOf="@+id/iconConfirm"
@@ -250,6 +191,65 @@
 
 
         </RelativeLayout>
+        <TextView
+            android:text="Pilih Jurusan:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+
+
+            <Spinner
+                android:id="@+id/matkul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- ICON -->
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <TextView
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon"
+                android:background="@android:color/transparent"
+                android:hint="Fakultas"
+                android:inputType="textCapWords"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="12sp" />
+
+
+
+        </RelativeLayout>
+
+
 
 
         <TextView

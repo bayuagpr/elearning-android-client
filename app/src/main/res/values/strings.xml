@@ -11,7 +11,7 @@
 
     <string name="login_gagal_title">Email atau sandi salah!</string>
     <string name="login_gagal_desc">Silahkan coba lagi</string>
-
+    <string name="default_notification_channel_id">elearning</string>
     <string name="error_login_expired">Sesi mu telah habis</string>
 
     <string name="title_activity_main">LEARNSEA</string>

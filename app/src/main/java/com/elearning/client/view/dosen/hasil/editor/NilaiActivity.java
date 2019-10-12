@@ -25,6 +25,7 @@ import com.elearning.client.model.Kelas;
 import com.elearning.client.model.Materi;
 import com.elearning.client.network.response.UploadFileResponse;
 import com.elearning.client.utils.SessionManager;
+import com.google.android.material.card.MaterialCardView;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 
@@ -58,8 +59,14 @@ public class NilaiActivity extends AppCompatActivity implements PickiTCallbacks,
     EditText nilaiInput;
     @BindView(R.id.komentarEt)
     EditText komentarInput;
-    @BindView(R.id.berkasDinilaiTv)
+    @BindView(R.id.berkasLihatTv)
     TextView lihatBerkasDinilai;
+    @BindView(R.id.berkasLihatCv)
+    MaterialCardView berkasLihat;
+    @BindView(R.id.berkasGantiCv)
+    MaterialCardView berkasGanti;
+    @BindView(R.id.berkasSimpanCv)
+    MaterialCardView berkasSimpan;
     @BindView(R.id.identitasDinilai)
     TextView identitasDinilaiTv;
     @BindView(R.id.statusHasil)
@@ -85,6 +92,9 @@ public class NilaiActivity extends AppCompatActivity implements PickiTCallbacks,
         presenter = new NilaiPresenter(this);
         //container = findViewById(R.id.activityMainPdfView);
         pickiT = new PickiT(this, this);
+        berkasLihat.setVisibility(View.VISIBLE);
+        berkasGanti.setVisibility(View.GONE);
+        berkasSimpan.setVisibility(View.GONE);
         initDataIntent();
         setTextEditor();
         nilaiInput.setFilters(new InputFilter[]{ new BatasNilai("1", "100")});

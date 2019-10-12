@@ -24,10 +24,10 @@ public class KelasPresenter {
         disposable = new CompositeDisposable();
     }
 
-    void getListMatkul(String token, Integer page) {
+    void getListMatkul(String token) {
         view.showProgress();
         disposable.add(
-            apiInterface.getAllMataKuliah(token, page, 10)
+            apiInterface.getAllMataKuliah(token)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableObserver<MataKuliahResponse>(){

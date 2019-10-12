@@ -190,9 +190,6 @@ public class RequestedFragment extends Fragment implements RequestedView {
                 enroll.setDisetujui(true);
                 presenter.updateEnroll(session.getKeyToken(),id,enroll);
                 //DO SOMETHING IF YES
-            }else{
-                showLongToast("Persetujuan dibatalkan");
-                //DO SOMETHING IF NO
             }
         });
 

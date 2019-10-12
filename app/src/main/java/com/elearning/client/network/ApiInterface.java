@@ -6,6 +6,7 @@ import com.elearning.client.model.Fakultas;
 import com.elearning.client.model.Hasil;
 import com.elearning.client.model.Jurusan;
 import com.elearning.client.model.Kelas;
+import com.elearning.client.model.Mahasiswa;
 import com.elearning.client.model.MataKuliah;
 import com.elearning.client.model.Materi;
 import com.elearning.client.model.Soal;
@@ -13,10 +14,13 @@ import com.elearning.client.model.User;
 import com.elearning.client.model.UserLogin;
 import com.elearning.client.network.response.DosenResponse;
 import com.elearning.client.network.response.EnrollmentResponse;
+import com.elearning.client.network.response.ExistEnrollResponse;
+import com.elearning.client.network.response.ExistHasilResponse;
 import com.elearning.client.network.response.FakultasResponse;
 import com.elearning.client.network.response.HasilResponse;
 import com.elearning.client.network.response.JurusanResponse;
 import com.elearning.client.network.response.KelasResponse;
+import com.elearning.client.network.response.MahasiswaResponse;
 import com.elearning.client.network.response.MataKuliahResponse;
 import com.elearning.client.network.response.MateriResponse;
 import com.elearning.client.network.response.SoalResponse;
@@ -85,6 +89,30 @@ public interface ApiInterface {
     Completable deleteDosen(@Header("Authorization") String token,
                                @Query("id") String id);
 
+    @GET("mahasiswa/tampilkan")
+    Observable<MahasiswaResponse> getAllMahasiswa(@Header("Authorization") String token,
+                                              @Query("page") Integer page,
+                                              @Query("size") Integer size);
+
+    @GET("mahasiswa/tampilkan")
+    Observable<MahasiswaResponse> getOneMahasiswa(@Header("Authorization") String token,
+                                          @Query("id") String id);
+
+
+
+    @POST("mahasiswa")
+    Observable<MahasiswaResponse> saveMahasiswa(@Header("Authorization") String token,
+                                        @Body Mahasiswa dosen);
+
+    @PUT("mahasiswa/renewal")
+    Completable updateMahasiswa(@Header("Authorization") String token,
+                            @Query("id") String id,
+                            @Body Mahasiswa dosen);
+
+    @DELETE("mahasiswa/hapus")
+    Completable deleteMahasiswa(@Header("Authorization") String token,
+                            @Query("id") String id);
+
     //Enrollment CRUD
     @GET("enrollment/tampilkan")
     Observable<EnrollmentResponse> getAllEnrollment(@Header("Authorization") String token,
@@ -99,13 +127,21 @@ public interface ApiInterface {
     @GET("enrollment/tampilkanSemuaMahasiswa")
     Observable<EnrollmentResponse> getAllEnrollMahasiswa(@Header("Authorization") String token,
                                                    @Query("id") String id,
+                                                         @Query("disetujui") Boolean disetujui,
                                                    @Query("page") Integer page,
                                                    @Query("size") Integer size);
     @GET("enrollment/tampilkan")
     Observable<EnrollmentResponse> getOneEnrollment(@Header("Authorization") String token,
                                           @Query("id") String id);
+    @GET("enrollment/existEnrollment")
+    Observable<ExistEnrollResponse> getExistEnroll(@Header("Authorization") String token,
+                                                     @Query("idMahasiswa") String idMahasiswa,
+                                                   @Query("idKelas") String idKelas );
 
-
+    @GET("hasil/existHasil")
+    Observable<ExistHasilResponse> getExistHasil(@Header("Authorization") String token,
+                                                 @Query("idMahasiswa") String idMahasiswa,
+                                                 @Query("idSoal") String idSoal );
 
     @POST("enrollment")
     Observable<EnrollmentResponse> saveEnrollment(@Header("Authorization") String token,
@@ -153,6 +189,11 @@ public interface ApiInterface {
                             @Query("id") String id,
                             @Body Hasil hasil);
 
+    @PUT("hasil/beriNilai")
+    Completable beriNilai(@Header("Authorization") String token,
+                            @Query("id") String id,
+                            @Body Hasil hasil);
+
     @DELETE("hasil/hapus")
     Completable deleteHasil(@Header("Authorization") String token,
                             @Query("id") String id);
@@ -185,9 +226,7 @@ public interface ApiInterface {
 
     //Jurusan CRUD
     @GET("jurusan/tampilkan")
-    Observable<JurusanResponse> getAllJurusan(@Header("Authorization") String token,
-                                              @Query("page") Integer page,
-                                              @Query("size") Integer size);
+    Observable<JurusanResponse> getAllJurusan(@Header("Authorization") String token);
 
     @GET("jurusan/tampilkan")
     Observable<JurusanResponse> getOneJurusan(@Header("Authorization") String token,
@@ -249,9 +288,7 @@ public interface ApiInterface {
 
     //Mata Kuliah CRUD
     @GET("matakuliah/tampilkan")
-    Observable<MataKuliahResponse> getAllMataKuliah(@Header("Authorization") String token,
-                                                    @Query("page") Integer page,
-                                                    @Query("size") Integer size);
+    Observable<MataKuliahResponse> getAllMataKuliah(@Header("Authorization") String token);
 
     @GET("matakuliah/tampilkan")
     Observable<MataKuliahResponse> getOneMataKuliah(@Header("Authorization") String token,

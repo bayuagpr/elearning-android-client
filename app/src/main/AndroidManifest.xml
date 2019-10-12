@@ -18,6 +18,25 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+             See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
         <activity android:name=".view.dosen.materi.editor.PDFActivity"/>
 
         <provider
@@ -49,6 +68,16 @@
         <activity android:name=".view.dosen.login.LoginDosenActivityActivity" />
         <activity android:name=".view.dosen.signup.SignupDosenActivityActivity" />
         <activity android:name=".view.mahasiswa.signup.SignupMahasiswaActivityActivity" />
+        <activity android:name=".view.mahasiswa.jawaban.NilaiActivity"/>
+        <activity android:name=".view.mahasiswa.signup.InitMahasiswaActivityActivity"/>
+        <activity android:name=".view.mahasiswa.enroll.AnggotaKelasActivity"/>
+        <activity android:name=".view.mahasiswa.jawaban.PDFActivity"/>
+        <activity android:name=".view.mahasiswa.kelas.detail.KelasDetailActivity"/>
+        <activity android:name=".view.mahasiswa.soal.detail.SoalDetailActivity"/>
+        <activity android:name=".view.mahasiswa.materi.editor.PDFActivity"/>
+        <activity android:name=".view.mahasiswa.soal.editor.PDFActivity"/>
+        <activity android:name=".view.mahasiswa.soal.editor.SoalActivity"/>
+        <activity android:name=".view.mahasiswa.materi.editor.MateriActivity"/>
         <activity
             android:name=".view.mahasiswa.MainMahasiswaActivity"
             android:label="@string/title_activity_main"
@@ -65,6 +94,7 @@
         </activity>
         <activity android:name=".view.dosen.kelas.detail.KelasDetailActivity" />
         <activity android:name=".view.dosen.materi.editor.MateriActivity" />
+
     </application>
 
 </manifest>

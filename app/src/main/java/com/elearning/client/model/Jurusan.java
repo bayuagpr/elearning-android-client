@@ -17,4 +17,7 @@ public class Jurusan {
   @SerializedName("nama")
   private String nama;
 
+  @Expose
+  @SerializedName("fakultas")
+  private Fakultas fakultas;
 }

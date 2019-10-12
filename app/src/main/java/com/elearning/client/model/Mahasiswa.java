@@ -19,10 +19,19 @@ public class Mahasiswa {
 
   @Expose
   @SerializedName("tanggal_lahir")
-  private Date tanggal_lahir;
+  private long tanggal_lahir;
 
   @Expose
   @SerializedName("tempat_lahir")
   private String tempat_lahir;
+
+  @Expose
+  @SerializedName("alamat")
+  private String alamat;
+
+
+  @Expose
+  @SerializedName("jurusan")
+  private Jurusan jurusan;
 
 }

@@ -86,7 +86,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/berkasDinilaiCv"
+                android:id="@+id/berkasSimpanCv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,11 +105,11 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/berkasDinilaiTv"
+                        android:id="@+id/berkasSimpanTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lines="1"
-                        android:hint="Lihat Berkas"
+                        android:hint="Simpan Berkas"
                         android:gravity="center_vertical"
                         android:textAppearance="@style/TextAppearance.InputField"
                         android:background="?attr/selectableItemBackground"
@@ -124,13 +124,127 @@
                         style="@style/InputImageView" />
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/fileSimpan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berkasSimpanCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/berkasLihatCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berkasSimpanCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/berkasLihatTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Lihat Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/timeLihatIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/berkasGantiCv"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berkasLihatCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.CardView"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/fbutton_color_silver">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/berkasGantiTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:hint="Ganti Berkas"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.InputField"
+                        android:background="?attr/selectableItemBackground"
+                        android:textAllCaps="true"
+                        style="@style/Widget.HowMuch.InputTextView" />
+
+                    <ImageView
+                        android:id="@+id/timeGantiIv"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_crime"
+                        android:contentDescription="Time"
+                        style="@style/InputImageView" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/fileUpdate"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berkasGantiCv"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="24dp"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.InputField"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="true"
+                style="@style/Widget.HowMuch.InputTextView" />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nilaiTil"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/berkasDinilaiCv"
+                app:layout_constraintTop_toBottomOf="@id/berkasGantiCv"
                 android:layout_marginStart="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:layout_marginTop="@dimen/margin_normal"

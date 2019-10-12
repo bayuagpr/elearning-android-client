@@ -5,42 +5,50 @@ import android.os.Bundle;
 
 import com.elearning.client.view.BaseActivity;
 import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.elearning.client.R;
 import com.elearning.client.utils.SessionManager;
-import com.elearning.client.view.dosen.kelas.KelasFragment;
+import com.elearning.client.view.mahasiswa.kelas.tergabung.TergabungKelasFragment;
 import com.elearning.client.view.mahasiswa.search.SearchActivity;
+import com.google.android.material.tabs.TabLayout;
 
 
 public class MainMahasiswaActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     SessionManager sessionManager;
+    TabLayout bubbleTabBar;
+    // TabItem tabEarly, tabLate;
+    FrameLayout frameLayout;
+    ViewPager viewpager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mahasiswa);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        bubbleTabBar = findViewById(R.id.bubbleTabBarEnroll);
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
 
 //        Benerin bug ketika rotasi landsacpe malah pindah ke mainActivity
-        if (savedInstanceState == null) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.mainFrame, new KelasFragment());
-            fragmentTransaction.commit();
-        }
+        viewpager = findViewById(R.id.viewpager);
+        viewpager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(bubbleTabBar));
+
+        bubbleTabBar.setupWithViewPager(viewpager);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,7 +90,7 @@ public class MainMahasiswaActivity extends BaseActivity
         if (id == R.id.nav_penjualan) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.mainFrame, new KelasFragment())
+                    .replace(R.id.mainFrame, new TergabungKelasFragment())
                     .commit();
         } else if (id == R.id.nav_logout) {
             sessionManager.logoutUser();

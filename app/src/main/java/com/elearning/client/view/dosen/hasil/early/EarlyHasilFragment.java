@@ -176,34 +176,34 @@ public class EarlyHasilFragment extends Fragment implements EarlyHasilView {
     void onClickRecylerView() {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
                 (view, position) -> {
-                    Hasil materi = adapter.getHasil(position);
-                    if(materi.isTernilai()){
+                    Hasil hasil = adapter.getHasil(position);
+                    if(hasil.isTernilai()){
                         Intent intent = new Intent(getActivity(), NilaiActivity.class);
                         //Log.d("pilih materi", "isi: "+materi.getId()+" "+materi.getMataKuliah().getId()+" "+materi.getNama());
-                        intent.putExtra("id", materi.getId());
-                        intent.putExtra("isi_jawaban", materi.getIsiJawaban());
-                        intent.putExtra("status_kumpul", materi.getStatus());
-                        intent.putExtra("nama_mahasiswa", materi.getMahasiswa().getNama());
-                        intent.putExtra("nim_mahasiswa", materi.getMahasiswa().getNim());
-                        intent.putExtra("tipesoal", materi.getSoal().getTipe());
-                        intent.putExtra("ternilai", materi.isTernilai());
+                        intent.putExtra("id", hasil.getId());
+                        intent.putExtra("isi_jawaban", hasil.getIsiJawaban());
+                        intent.putExtra("status_kumpul", hasil.getStatus());
+                        intent.putExtra("nama_mahasiswa", hasil.getMahasiswa().getNama());
+                        intent.putExtra("nim_mahasiswa", hasil.getMahasiswa().getNim());
+                        intent.putExtra("tipesoal", hasil.getSoal().getTipe());
+                        intent.putExtra("ternilai", hasil.isTernilai());
                         intent.putExtra("id_soal", idSoal);
-                        intent.putExtra("attachment_materi", materi.getAttachment());
-                        intent.putExtra("nilai", materi.getNilai());
-                        intent.putExtra("komentar", materi.getKomentar());
+                        intent.putExtra("attachment_materi", hasil.getAttachment());
+                        intent.putExtra("nilai", hasil.getNilai());
+                        intent.putExtra("komentar", hasil.getKomentar());
                         startActivityForResult(intent, REQUEST_UPDATE);
                     }else{
                         Intent intent = new Intent(getActivity(), NilaiActivity.class);
                         //Log.d("pilih materi", "isi: "+materi.getId()+" "+materi.getMataKuliah().getId()+" "+materi.getNama());
-                        intent.putExtra("id", materi.getId());
-                        intent.putExtra("isi_jawaban", materi.getIsiJawaban());
-                        intent.putExtra("status_kumpul", materi.getStatus());
-                        intent.putExtra("nama_mahasiswa", materi.getMahasiswa().getNama());
-                        intent.putExtra("nim_mahasiswa", materi.getMahasiswa().getNim());
-                        intent.putExtra("tipesoal", materi.getSoal().getTipe());
-                        intent.putExtra("ternilai", materi.isTernilai());
+                        intent.putExtra("id", hasil.getId());
+                        intent.putExtra("isi_jawaban", hasil.getIsiJawaban());
+                        intent.putExtra("status_kumpul", hasil.getStatus());
+                        intent.putExtra("nama_mahasiswa", hasil.getMahasiswa().getNama());
+                        intent.putExtra("nim_mahasiswa", hasil.getMahasiswa().getNim());
+                        intent.putExtra("tipesoal", hasil.getSoal().getTipe());
+                        intent.putExtra("ternilai", hasil.isTernilai());
                         intent.putExtra("id_soal", idSoal);
-                        intent.putExtra("attachment_materi", materi.getAttachment());
+                        intent.putExtra("attachment_materi", hasil.getAttachment());
                         startActivityForResult(intent, REQUEST_UPDATE);
                     }
 

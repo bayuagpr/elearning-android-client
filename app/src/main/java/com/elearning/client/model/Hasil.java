@@ -43,6 +43,9 @@ public class Hasil{
   @SerializedName("soal")
   private Soal soal;
 
+  @Expose
+  @SerializedName("lastModified")
+  private long lastModified;
 
   @Expose
   @SerializedName("ternilai")

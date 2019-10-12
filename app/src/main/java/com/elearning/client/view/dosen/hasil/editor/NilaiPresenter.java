@@ -31,7 +31,7 @@ public class NilaiPresenter {
     void simpanNilai(String token, String id, Hasil materi) {
         view.showProgress();
         disposable.add(
-                apiInterface.updateHasil(token, id, materi)
+                apiInterface.beriNilai(token, id, materi)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableCompletableObserver(){

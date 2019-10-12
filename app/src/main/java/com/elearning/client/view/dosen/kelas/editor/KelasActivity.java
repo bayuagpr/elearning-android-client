@@ -36,7 +36,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
     SessionManager session;
     SpinnerMatkulAdapter adapter;
 
-    String id, nama, nama_kelas, matkul_id, namaDosen, jumlah_barang;
+    String id, nama, nama_kelas, matkul_id, namaDosen, fakultas, fakultasId;
 
     @BindView(R.id.matkul)
     Spinner s_nama;
@@ -62,7 +62,7 @@ public class KelasActivity extends AppCompatActivity implements KelasView {
         progressDialog.setMessage("Loading ...");
         presenter = new KelasPresenter(this);
 
-        presenter.getListMatkul(session.getKeyToken(),0);
+        presenter.getListMatkul(session.getKeyToken());
 
         initDataIntent();
 

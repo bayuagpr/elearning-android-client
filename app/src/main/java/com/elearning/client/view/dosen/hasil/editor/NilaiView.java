@@ -11,4 +11,5 @@ public interface NilaiView {
     void hideProgress();
     void statusSuccess(String message);
     void statusError(String message);
+
 }

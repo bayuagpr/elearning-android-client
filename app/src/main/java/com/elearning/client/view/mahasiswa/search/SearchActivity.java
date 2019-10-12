@@ -18,12 +18,16 @@ import android.widget.Toast;
 
 import com.elearning.client.R;
 import com.elearning.client.model.Kelas;
+import com.elearning.client.network.response.ExistEnrollResponse;
 import com.elearning.client.network.response.KelasResponse;
 import com.elearning.client.utils.RecyclerItemClickListener;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.utils.SimpleDividerItemDecoration;
-import com.elearning.client.view.dosen.kelas.KelasAdapter;
-import com.elearning.client.view.dosen.kelas.editor.KelasActivity;
+import com.elearning.client.view.mahasiswa.kelas.tergabung.TergabungKelasAdapter;
+import com.elearning.client.view.mahasiswa.kelas.detail.KelasDetailActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,12 +43,15 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.searchText)
+    @BindView(R.id.searchTextId)
     EditText et_searchText;
     @BindView(R.id.clear)
     ImageButton clear;
     @BindView(R.id.progress)
     ProgressBar progress;
+    List<Kelas> kelasList;
+    Integer page,lastPage, initPage,totalPage;
+    String dicari,id,matkul_id,namaDosen,nama_kelas;
     private static final int REQUEST_UPDATE = 2;
 
     @Override
@@ -52,7 +59,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-
+        initPage=0;
+        page = 0;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,7 +68,11 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         session = new SessionManager(this);
         presenter = new SearchPresenter(this);
-
+        kelasList = new ArrayList<>();
+        adapter = new KelasAdapter(kelasList);
+        adapter.setMoreDataAvailable(true);
+        onSetRecyclerView();
+        onClickRecylerView();
     }
 
 
@@ -71,14 +83,15 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     }
 
     @OnClick(R.id.search) void search() {
+        dicari = et_searchText.getText().toString();
         presenter.getSearch(
                 session.getKeyToken(),
-                et_searchText.getText().toString(),
+                dicari,
                 0
         );
     }
 
-    @OnTextChanged(value = R.id.searchText, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    @OnTextChanged(value = R.id.searchTextId, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void searchTextChanged(Editable s) {
         String text = s.toString();
         if (text.length() == 0) {
@@ -88,7 +101,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         }
     }
 
-    @OnEditorAction(R.id.searchText) boolean onSearch() {
+    @OnEditorAction(R.id.searchTextId) boolean onSearch() {
         search();
         return true;
     }
@@ -111,27 +124,113 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public void statusSuccess(KelasResponse kelasResponse) {
-        adapter = new KelasAdapter(kelasResponse.getKelasList());
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,
-                (view, position) -> {
-                    Kelas kelas = adapter.getKelas(position);
-
-                    Intent intent = new Intent(this, KelasActivity.class);
-                    Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
-                    intent.putExtra("id", kelas.getId());
-                    intent.putExtra("matkul_id", kelas.getMataKuliah().getId());
-                    intent.putExtra("nama_kelas", kelas.getNama());
-
-                    startActivityForResult(intent, REQUEST_UPDATE);
-                }));
+        kelasList.removeAll(kelasList);
+        kelasList.addAll(kelasResponse.getKelasList());
         adapter.notifyDataSetChanged();
+        lastPage = kelasResponse.getTotalPages()-1;
+        totalPage = kelasResponse.getTotalPages();
+    }
+
+    @Override
+    public void loadMore(KelasResponse kelasResponse) {
+        //kelasList.remove(kelasList.size()-1);
+        List<Kelas> result = kelasResponse.getKelasList();
+        page= kelasResponse.getNumber()+1;
+
+        Log.d("load more", "result size"+result.size());
+        if (result.size() > 0) {
+            kelasList.addAll(result);
+        } else {
+            adapter.setMoreDataAvailable(false);
+            Toast.makeText(this, "No more data", Toast.LENGTH_SHORT).show();
+        }
+        adapter.notifyDataChanged();
+    }
+
+    @Override
+    public void isExist(ExistEnrollResponse supplierResponse) {
+
+                    if(supplierResponse.getStatus()){
+                        Intent intent = new Intent(SearchActivity.this, KelasDetailActivity.class);
+                        //Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
+                        intent.putExtra("id", id);
+                        intent.putExtra("matkul_id", matkul_id);
+                        intent.putExtra("nama_kelas", nama_kelas);
+                        intent.putExtra("nama_dosen", namaDosen);
+                        intent.putExtra("status_enroll", supplierResponse.getEnrollmentList().get(0).getDisetujui());
+                        intent.putExtra("status_exist", supplierResponse.getStatus());
+                        startActivity(intent);
+                    }else {
+                        Intent intent = new Intent(SearchActivity.this, KelasDetailActivity.class);
+                        //Log.d("pilih kelas", "isi: "+kelas.getId()+" "+kelas.getMataKuliah().getId()+" "+kelas.getNama());
+                        intent.putExtra("id", id);
+                        intent.putExtra("matkul_id", matkul_id);
+                        intent.putExtra("nama_kelas", nama_kelas);
+                        intent.putExtra("nama_dosen", namaDosen);
+                        intent.putExtra("status_exist", supplierResponse.getStatus());
+                        startActivity(intent);
+                    }
+
+
+
     }
 
     @Override
     public void statusError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    void onSetRecyclerView() {
+
+        adapter.setLoadMoreListener(() -> recyclerView.post(() -> {
+            if(totalPage.equals(1)){
+                if(page<lastPage){
+                    int index = kelasList.size();
+                    //kelasList.add(new Kelas("load"));
+                    //adapter.notifyItemInserted(kelasList.size()-1);
+                    if(page.equals(0)){
+                        page =index/10;
+                    }
+                    Log.d("load more", "page: "+page);
+                    presenter.getSearchMore(session.getKeyToken(), dicari,page);}
+                else {
+                    adapter.setMoreDataAvailable(false);
+                    Toast.makeText(this, "No more data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                if(page<=lastPage){
+                    int index = kelasList.size();
+                    //kelasList.add(new Kelas("load"));
+                    //adapter.notifyItemInserted(kelasList.size()-1);
+                    if(page.equals(0)){
+                        page =index/10;
+                    }
+                    Log.d("load more", "page: "+page);
+                    presenter.getSearchMore(session.getKeyToken(), dicari,page);}
+                else {
+                    adapter.setMoreDataAvailable(false);
+                    Toast.makeText(this, "No more data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+        }));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(SearchActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+    }
+
+    void onClickRecylerView() {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(SearchActivity.this,
+                (view, position) -> {
+                    Kelas kelas = adapter.getKelas(position);
+                    id = kelas.getId();
+                    matkul_id = kelas.getMataKuliah().getId();
+                    nama_kelas = kelas.getNama();
+                    namaDosen = kelas.getDosen().getNama();
+                    presenter.getExistEnrollment(session.getKeyToken(),session.getKeyId(),id);
+                }));
     }
 
     @Override

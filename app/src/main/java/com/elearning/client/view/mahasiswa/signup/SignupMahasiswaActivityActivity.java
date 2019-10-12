@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.elearning.client.R;
 import com.elearning.client.model.Role;
 import com.elearning.client.model.User;
+import com.elearning.client.network.response.JurusanResponse;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.view.BaseLoginActivity;
 import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
@@ -57,6 +58,7 @@ public class SignupMahasiswaActivityActivity extends BaseLoginActivity implement
     SessionManager sessionManager;
     SignupMahasiswaPresenter presenter;
     Validator validator;
+    String nim ,email ,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,9 +93,9 @@ public class SignupMahasiswaActivityActivity extends BaseLoginActivity implement
     }
     private void userSignup() {
 
-        String nim = idInput.getText().toString();
-        String email = usernameInput.getText().toString();
-        String password = passConfirm.getText().toString();
+        nim = idInput.getText().toString();
+        email = usernameInput.getText().toString();
+       password = passConfirm.getText().toString();
 
         User user = new User();
         user.setId(nim);
@@ -111,14 +113,26 @@ public class SignupMahasiswaActivityActivity extends BaseLoginActivity implement
         sessionManager.createLoginSession(
                 "Bearer " + tokenResponse
         );
-        finish();
-        Intent intent = new Intent(SignupMahasiswaActivityActivity.this, MainMahasiswaActivity.class);
+        Intent intent = new Intent(SignupMahasiswaActivityActivity.this, InitMahasiswaActivityActivity.class);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
+    }
+
+    @Override
+    public void setListJurusan(JurusanResponse mataKuliahResponse) {
+
+
     }
 
     @Override
     public void statusError(String message) {
         Log.d("Error", "statusError: " + message);
+    }
+
+    @Override
+    public void afterSubmitMahasiswa() {
+
     }
 
     @Override
