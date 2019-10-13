@@ -167,12 +167,12 @@ public class InitMahasiswaActivityActivity extends BaseActivity implements Valid
     private void userSignup() {
 
 
-        long dateSer = tanggalLahir.getTime() / 1000L;
+      //  long dateSer = tanggalLahir.getTime() / 1000L;
         Mahasiswa user = new Mahasiswa();
         user.setNim(sessionManager.getKeyId());
         user.setNama(nama.getText().toString());
         user.setTempat_lahir(tempatLahir.getText().toString());
-        user.setTanggal_lahir(dateSer);
+        user.setTanggal_lahir(tanggalLahir);
         user.setAlamat(alamat.getText().toString());
         Jurusan jurusan = new Jurusan();
         jurusan.setId(jurusanId);

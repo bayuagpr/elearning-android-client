@@ -135,12 +135,12 @@ public class InitDosenActivityActivity extends BaseActivity implements Validator
     private void userSignup() {
 
 
-        long dateSer = tanggalLahir.getTime() / 1000L;
+        //long dateSer = tanggalLahir.getTime() / 1000L;
         Dosen user = new Dosen();
         user.setNidn(sessionManager.getKeyId());
         user.setNama(idInput.getText().toString());
         user.setTempat_lahir(usernameInput.getText().toString());
-        user.setTanggal_lahir(dateSer);
+        user.setTanggal_lahir(tanggalLahir);
         user.setAlamat(passConfirm.getText().toString());
         presenter.submitDosen(
                 sessionManager.getKeyToken(),user

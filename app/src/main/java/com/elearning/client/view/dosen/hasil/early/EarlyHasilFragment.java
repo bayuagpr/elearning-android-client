@@ -190,6 +190,7 @@ public class EarlyHasilFragment extends Fragment implements EarlyHasilView {
                         intent.putExtra("id_soal", idSoal);
                         intent.putExtra("attachment_materi", hasil.getAttachment());
                         intent.putExtra("nilai", hasil.getNilai());
+                        intent.putExtra("last_modified", hasil.getLastModified());
                         intent.putExtra("komentar", hasil.getKomentar());
                         startActivityForResult(intent, REQUEST_UPDATE);
                     }else{
@@ -203,6 +204,7 @@ public class EarlyHasilFragment extends Fragment implements EarlyHasilView {
                         intent.putExtra("tipesoal", hasil.getSoal().getTipe());
                         intent.putExtra("ternilai", hasil.isTernilai());
                         intent.putExtra("id_soal", idSoal);
+                        intent.putExtra("last_modified", hasil.getLastModified());
                         intent.putExtra("attachment_materi", hasil.getAttachment());
                         startActivityForResult(intent, REQUEST_UPDATE);
                     }

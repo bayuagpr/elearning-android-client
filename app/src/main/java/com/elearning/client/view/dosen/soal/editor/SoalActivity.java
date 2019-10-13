@@ -156,7 +156,7 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
         dateGantiSoal.setOnClickListener(v -> {
             new SlideDateTimePicker.Builder(getSupportFragmentManager())
                     .setListener(listener)
-                    .setInitialDate(new Date())
+                    .setInitialDate(dueDate)
                     .setMinDate(new Date())
                     //.setMaxDate(maxDate)
                     .setIs24HourTime(true)
@@ -204,12 +204,12 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
     }
 
     @OnClick(R.id.saveBtnSoal) void simpan() {
-        long dateSer = dueDate.getTime() / 1000L;
+
         Soal soal = new Soal();
         soal.setJudul(judulSoal.getText().toString());
         soal.setDeskripsi(descSoal.getText().toString());
         soal.setAttachment(attachmentSoal);
-        soal.setDueDate(dateSer);
+        soal.setDueDate(dueDate);
         soal.setTipe(s_tipe.getSelectedItem().toString());
         Kelas kelas =  new Kelas(idKelas);
         kelas.setId(idKelas);
@@ -223,12 +223,12 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
     }
 
     @OnClick(R.id.updateSoal) void update() {
-        long dateSer = dueDate.getTime() / 1000L;
+       // long dateSer = dueDate.getTime() / 1000L;
         Soal soal = new Soal();
         soal.setJudul(judulSoal.getText().toString());
         soal.setDeskripsi(descSoal.getText().toString());
         soal.setAttachment(attachmentSoal);
-        soal.setDueDate(dateSer);
+        soal.setDueDate(dueDate);
         soal.setTipe(s_tipe.getSelectedItem().toString());
         Kelas kelas =  new Kelas(idKelas);
         kelas.setId(idKelas);

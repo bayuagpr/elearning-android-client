@@ -75,7 +75,7 @@
                     android:id="@+id/statusHasil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lines="2"
+                    android:lines="4"
                     android:text="Status Pengumpulan: Tepat Waktu"
                     android:textColor="@color/grey_dark"
                     android:layout_marginTop="26.7dp"

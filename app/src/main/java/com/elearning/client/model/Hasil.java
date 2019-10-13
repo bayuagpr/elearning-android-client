@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-
+import java.util.Date;
 
 import lombok.Data;
 
@@ -45,7 +45,7 @@ public class Hasil{
 
   @Expose
   @SerializedName("lastModified")
-  private long lastModified;
+  private Date lastModified;
 
   @Expose
   @SerializedName("ternilai")

@@ -194,6 +194,7 @@ public class LateHasilFragment extends Fragment implements LateHasilView {
                         intent.putExtra("tipesoal", materi.getSoal().getTipe());
                         intent.putExtra("ternilai", materi.isTernilai());
                         intent.putExtra("id_soal", idSoal);
+                        intent.putExtra("last_modified", materi.getLastModified());
                         intent.putExtra("attachment_materi", materi.getAttachment());
                         intent.putExtra("nilai", materi.getNilai());
                         intent.putExtra("komentar", materi.getKomentar());
@@ -209,6 +210,7 @@ public class LateHasilFragment extends Fragment implements LateHasilView {
                         intent.putExtra("tipesoal", materi.getSoal().getTipe());
                         intent.putExtra("ternilai", materi.isTernilai());
                         intent.putExtra("id_soal", idSoal);
+                        intent.putExtra("last_modified", materi.getLastModified());
                         intent.putExtra("attachment_materi", materi.getAttachment());
                         startActivityForResult(intent, REQUEST_UPDATE);
                     }

@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import lombok.Data;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 public class Materi implements Serializable{
@@ -27,6 +28,10 @@ public class Materi implements Serializable{
   @Expose
   @SerializedName("attachment")
   private String attachment;
+
+  @Expose
+  @SerializedName("creationDate")
+  private Date creationDate;
 
   @Expose
   @SerializedName("kelas")

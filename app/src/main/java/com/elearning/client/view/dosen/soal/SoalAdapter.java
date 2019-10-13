@@ -73,11 +73,11 @@ public class SoalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Log.d("pos", "onBindViewHolder: "+i);
             Log.d("nama", "onBindViewHolder: "+soal.getJudul());
             //Log.d("bongkar", "onBindViewHolder: "+materi.getDosen().getNidn());
-            java.util.Date time=new java.util.Date((long)soal.getDueDate()*1000);
+            //java.util.Date time=new java.util.Date((long)soal.getDueDate()*1000);
             SimpleDateFormat mFormatter = new SimpleDateFormat(" dd MMMM yyyy hh:mm aa");
             ListHolder listHolder = (ListHolder) viewHolder;
             listHolder.nama.setText(soal.getJudul());
-            listHolder.tipe.setText("Tipe: "+soal.getTipe()+ "\n" +"Dikumpulkan paling lambat pada: "+ "\n" +mFormatter.format(time));
+            listHolder.tipe.setText("Tipe: "+soal.getTipe()+ "\n" +"Dikumpulkan paling lambat pada: "+ "\n" +mFormatter.format(soal.getDueDate()));
 
 
         }

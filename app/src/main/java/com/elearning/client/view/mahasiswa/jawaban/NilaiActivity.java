@@ -32,6 +32,7 @@ import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -87,7 +88,8 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
     @BindView(R.id.fileUpdate)
     TextView fileUpdate;
     private Uri uri;
-    Date dueDate;
+    Date dueDate,last_modified;
+    private SimpleDateFormat mFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
         presenter = new NilaiPresenter(this);
         //container = findViewById(R.id.activityMainPdfView);
         pickiT = new PickiT(this, this);
+        mFormatter = new SimpleDateFormat(" dd MMMM yyyy hh:mm aa");
         initDataIntent();
         setTextEditor();
         lihatBerkasDinilai.setOnClickListener(v -> lihatMateriPDF());
@@ -161,8 +164,8 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
         } else {
             materi.setStatus("Late");
         }
-        long dateSer = tanggalSekarang.getTime() / 1000L;
-        materi.setLastModified(dateSer);
+        //long dateSer = tanggalSekarang.getTime() / 1000L;
+        materi.setLastModified(tanggalSekarang);
         presenter.simpanJawaban(
                 session.getKeyToken(),
                 materi        );
@@ -182,8 +185,8 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
             materi.setStatus("Late");
             Log.d(TAG, "late: "+dueDate+" "+tanggalSekarang);
         }
-        long dateSer = tanggalSekarang.getTime() / 1000L;
-        materi.setLastModified(dateSer);
+        //long dateSer = tanggalSekarang.getTime() / 1000L;
+        materi.setLastModified(tanggalSekarang);
         presenter.updateJawaban(
                 session.getKeyToken(),
                 id,
@@ -250,7 +253,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
         komentar = intent.getStringExtra("komentar");
         status_exist = intent.getBooleanExtra("status_exist",false);
         dueDate = (Date)intent.getSerializableExtra("due_date");
-
+        last_modified = (Date)intent.getSerializableExtra("last_modified");
     }
 
     private void setTextEditor() {
@@ -263,7 +266,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
                 komentarInput.setEnabled(false);
                 descDinilai.setText(isi_jawaban);
                 identitasDinilaiTv.setText("Nama: "+session.getKeyNama()+"\n"+"NIM: "+session.getKeyId());
-                statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Status Pengumpulan: "+status_kumpul);
+                statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Dikumpul tanggal: "+"\n"+mFormatter.format(last_modified)+"\n"+"Status Pengumpulan: "+status_kumpul);
                 //container.setVisibility(View.VISIBLE);
                 berkasLihat.setVisibility(View.VISIBLE);
                 content_simpan.setVisibility(View.GONE);
@@ -275,7 +278,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
                 descDinilai.setText(isi_jawaban);
                 descDinilai.setEnabled(true);
                 identitasDinilaiTv.setText("Nama: "+session.getKeyNama()+"\n"+"NIM: "+session.getKeyId());
-                statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Status Pengumpulan: "+status_kumpul);
+                statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Dikumpul tanggal: "+"\n"+mFormatter.format(last_modified)+"\n"+"Status Pengumpulan: "+status_kumpul);
                 getSupportActionBar().setTitle("Update Jawaban");
                 content_update.setVisibility(View.VISIBLE);
                 fileUpdate.setVisibility(View.VISIBLE);

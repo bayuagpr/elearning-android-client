@@ -183,7 +183,7 @@ public class SoalFragment extends Fragment implements SoalView {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
                 (view, position) -> {
                     Soal soal = adapter.getSoal(position);
-                    java.util.Date time=new java.util.Date((long)soal.getDueDate()*1000);
+                    //java.util.Date time=new java.util.Date((long)soal.getDueDate()*1000);
                     Intent intent = new Intent(getActivity(), SoalDetailActivity.class);
                     //Log.d("pilih materi", "isi: "+materi.getId()+" "+materi.getMataKuliah().getId()+" "+materi.getNama());
                     intent.putExtra("id", soal.getId());
@@ -192,7 +192,7 @@ public class SoalFragment extends Fragment implements SoalView {
                     intent.putExtra("id_kelas", idKelas);
                     intent.putExtra("attachment_soal", soal.getAttachment());
                     intent.putExtra("tipe_soal", soal.getTipe());
-                    intent.putExtra("due_date", time);
+                    intent.putExtra("due_date", soal.getDueDate());
                     startActivityForResult(intent, REQUEST_UPDATE);
                 }));
     }

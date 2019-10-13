@@ -19,7 +19,7 @@ public class Mahasiswa {
 
   @Expose
   @SerializedName("tanggal_lahir")
-  private long tanggal_lahir;
+  private Date tanggal_lahir;
 
   @Expose
   @SerializedName("tempat_lahir")

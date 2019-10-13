@@ -29,7 +29,11 @@ public class Soal {
 
   @Expose
   @SerializedName("dueDate")
-  private long dueDate;
+  private Date dueDate;
+
+  @Expose
+  @SerializedName("creationDate")
+  private Date creationDate;
 
   @Expose
   @SerializedName("kelas")

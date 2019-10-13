@@ -31,6 +31,8 @@ import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -77,6 +79,8 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
     @BindView(R.id.content_update_nilai)
     LinearLayout content_update;
     private Uri uri;
+    Date last_modified;
+    private SimpleDateFormat mFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +100,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
         berkasLihat.setVisibility(View.VISIBLE);
         berkasGanti.setVisibility(View.GONE);
         berkasSimpan.setVisibility(View.GONE);
+        mFormatter = new SimpleDateFormat(" dd MMMM yyyy hh:mm aa");
         initDataIntent();
         setTextEditor();
         nilaiInput.setFilters(new InputFilter[]{ new BatasNilai("1", "100")});
@@ -186,6 +191,7 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
         nim_mahasiswa = intent.getStringExtra("nim_mahasiswa");
         tipesoal = intent.getStringExtra("tipesoal");
         id_soal = intent.getStringExtra("id_soal");
+        last_modified = (Date)intent.getSerializableExtra("last_modified");
         ternilai = intent.getBooleanExtra("ternilai",false);
         attachment_materi = intent.getStringExtra("attachment_materi");
         nilai = intent.getStringExtra("nilai");
@@ -201,14 +207,14 @@ public class NilaiActivity extends BaseActivity implements PickiTCallbacks, Nila
             komentarInput.setText(komentar);
             descDinilai.setText(isi_jawaban);
             identitasDinilaiTv.setText("Nama: "+nama_mahasiswa+"\n"+"NIM: "+nim_mahasiswa);
-            statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Status Pengumpulan: "+status_kumpul);
+            statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Dikumpul tanggal: "+"\n"+mFormatter.format(last_modified)+"\n"+"Status Pengumpulan: "+status_kumpul);
             //container.setVisibility(View.VISIBLE);
             content_update.setVisibility(View.VISIBLE);
             content_simpan.setVisibility(View.GONE);
         } else {
             descDinilai.setText(isi_jawaban);
             identitasDinilaiTv.setText("Nama: "+nama_mahasiswa+"\n"+"NIM: "+nim_mahasiswa);
-            statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Status Pengumpulan: "+status_kumpul);
+            statusHasilTv.setText("Tipe Soal: "+tipesoal+"\n"+"Dikumpul tanggal: "+"\n"+mFormatter.format(last_modified)+"\n"+"Status Pengumpulan: "+status_kumpul);
             getSupportActionBar().setTitle("Simpan Nilai");
         }
     }

@@ -37,7 +37,7 @@ public class SoalDetailActivity extends BaseActivity implements SoalView{
    ProgressDialog progressDialog;
     FrameLayout frameLayout;
     SoalPresenter presenter;
-    Date dueDate;
+    Date dueDate,last_modified;
     Button buttonAtur, buttonLihat;
     ImageView backToList;
     private TextView price, address, desc;
@@ -88,6 +88,7 @@ public class SoalDetailActivity extends BaseActivity implements SoalView{
             intent.putExtra("attachment_materi", attachmentHasil);
             intent.putExtra("nilai", nilai);
             intent.putExtra("komentar", komentar);
+            intent.putExtra("last_modified", last_modified);
             intent.putExtra("status_exist", statusExist);
             intent.putExtra("due_date", dueDate);
             startActivityForResult(intent, REQUEST_UPDATE);
@@ -164,6 +165,7 @@ public class SoalDetailActivity extends BaseActivity implements SoalView{
             nilai = supplierResponse.getHasilList().get(0).getNilai();
             komentar = supplierResponse.getHasilList().get(0).getKomentar();
             statusExist = supplierResponse.getStatus();
+            last_modified = supplierResponse.getHasilList().get(0).getLastModified();
             if (ternilai) {
                 buttonAtur.setText("LIHAT NILAI");
             } else {

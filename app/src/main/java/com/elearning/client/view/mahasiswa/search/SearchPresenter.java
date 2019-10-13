@@ -90,7 +90,7 @@ public class SearchPresenter {
                             @Override
                             public void onNext(KelasResponse kelasResponse) {
                                 //Log.d("isi get search", "onNext: "+kelasResponse.getKelasList().toString());
-                                view.statusSuccess(kelasResponse);
+                                view.loadMore(kelasResponse);
                             }
 
                             @Override
