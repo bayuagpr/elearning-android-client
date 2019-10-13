@@ -25,9 +25,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
-                android:text="LearnSea"
+                android:text="Learnesa"
+                android:textStyle="bold"
                 android:textColor="#fff"
-                android:textSize="45sp" />
+                android:textSize="55sp" />
 
 
 

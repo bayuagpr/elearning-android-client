@@ -18,6 +18,7 @@ import com.elearning.client.model.Dosen;
 import com.elearning.client.model.Role;
 import com.elearning.client.model.User;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.BaseLoginActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
@@ -39,7 +40,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class InitDosenActivityActivity extends BaseLoginActivity implements Validator.ValidationListener, SignupView {
+public class InitDosenActivityActivity extends BaseActivity implements Validator.ValidationListener, SignupView {
 
     @BindView(R.id.id_input)
     @NotEmpty(message = "Nama tidak boleh kosong")

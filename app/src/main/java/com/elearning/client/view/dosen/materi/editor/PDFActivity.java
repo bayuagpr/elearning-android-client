@@ -9,12 +9,13 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.elearning.client.R;
+import com.elearning.client.view.BaseActivity;
 import com.github.barteksc.pdfviewpager.RemotePDFViewPager;
 import com.github.barteksc.pdfviewpager.adapter.PDFPagerAdapter;
 import com.github.barteksc.pdfviewpager.remote.DownloadFile;
 import com.github.barteksc.pdfviewpager.util.FileUtil;
 
-public class PDFActivity extends AppCompatActivity{
+public class PDFActivity extends BaseActivity {
 //    RemotePDFViewPager remotePDFViewPager;
 //    PDFPagerAdapter pdfAdapter;
 WebView webView;

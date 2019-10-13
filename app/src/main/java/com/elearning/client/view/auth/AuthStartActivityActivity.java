@@ -9,13 +9,14 @@ import androidx.cardview.widget.CardView;
 import android.widget.FrameLayout;
 
 import com.elearning.client.R;
+import com.elearning.client.view.BaseLoginActivity;
 import com.elearning.client.view.dosen.login.LoginDosenActivityActivity;
 import com.elearning.client.view.mahasiswa.login.LoginMahasiswaMahasiswaActivityActivity;
 
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class AuthStartActivityActivity extends AppCompatActivity  {
+public class AuthStartActivityActivity extends BaseLoginActivity {
 
     @BindView(R.id.header) LinearLayout header;
     @BindView(R.id.scrollView) ScrollView scrollView;

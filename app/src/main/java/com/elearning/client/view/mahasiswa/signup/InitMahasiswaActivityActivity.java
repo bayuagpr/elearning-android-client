@@ -21,6 +21,7 @@ import com.elearning.client.model.Mahasiswa;
 import com.elearning.client.model.User;
 import com.elearning.client.network.response.JurusanResponse;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.BaseLoginActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.dosen.signup.SignupPresenter;
@@ -38,7 +39,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class InitMahasiswaActivityActivity extends BaseLoginActivity implements Validator.ValidationListener, SignupMahasiswaView {
+public class InitMahasiswaActivityActivity extends BaseActivity implements Validator.ValidationListener, SignupMahasiswaView {
 
     @BindView(R.id.id_input)
     @NotEmpty(message = "Nama tidak boleh kosong")

@@ -2,6 +2,7 @@ package com.elearning.client.view.dosen.soal.detail;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -14,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.elearning.client.R;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.dosen.kelas.detail.KelasDetailActivity;
 import com.elearning.client.view.dosen.kelas.editor.KelasActivity;
@@ -30,7 +32,7 @@ import java.util.Date;
  * Created by wolfsoft4 on 22/1/18.
  */
 
-public class SoalDetailActivity extends AppCompatActivity {
+public class SoalDetailActivity extends BaseActivity {
     SessionManager session;
     TabLayout bubbleTabBar;
    // TabItem tabEarly, tabLate;
@@ -100,6 +102,7 @@ public class SoalDetailActivity extends AppCompatActivity {
             deskripsi_soal = intent.getStringExtra("deskripsi_soal");
             idKelas = intent.getStringExtra("id_kelas");
             attachmentSoal = intent.getStringExtra("attachment_soal");
+        Log.d("cek attachment", "initDataIntent: "+attachmentSoal);
             tipeSoal = intent.getStringExtra("tipe_soal");
             dueDate = (Date)intent.getSerializableExtra("due_date");
 

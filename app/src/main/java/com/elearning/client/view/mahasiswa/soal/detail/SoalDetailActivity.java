@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.elearning.client.R;
 import com.elearning.client.network.response.ExistHasilResponse;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.mahasiswa.jawaban.NilaiActivity;
 import com.elearning.client.view.mahasiswa.soal.editor.PDFActivity;
 import com.elearning.client.view.mahasiswa.soal.editor.SoalActivity;
@@ -30,7 +31,7 @@ import java.util.Date;
  * Created by wolfsoft4 on 22/1/18.
  */
 
-public class SoalDetailActivity extends AppCompatActivity implements SoalView{
+public class SoalDetailActivity extends BaseActivity implements SoalView{
     SessionManager session;
    // TabItem tabEarly, tabLate;
    ProgressDialog progressDialog;

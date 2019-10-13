@@ -23,6 +23,7 @@ import com.elearning.client.network.response.KelasResponse;
 import com.elearning.client.utils.RecyclerItemClickListener;
 import com.elearning.client.utils.SessionManager;
 import com.elearning.client.utils.SimpleDividerItemDecoration;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.mahasiswa.kelas.tergabung.TergabungKelasAdapter;
 import com.elearning.client.view.mahasiswa.kelas.detail.KelasDetailActivity;
 
@@ -35,7 +36,7 @@ import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import butterknife.OnTextChanged;
 
-public class SearchActivity extends AppCompatActivity implements SearchView {
+public class SearchActivity extends BaseActivity implements SearchView {
 
     SearchPresenter presenter;
     SessionManager session;

@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.elearning.client.R;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ import java.util.Date;
  * Created by wolfsoft4 on 22/1/18.
  */
 
-public class AnggotaKelasActivity extends AppCompatActivity {
+public class AnggotaKelasActivity extends BaseActivity {
     SessionManager session;
     TabLayout bubbleTabBar;
    // TabItem tabEarly, tabLate;

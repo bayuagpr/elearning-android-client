@@ -26,6 +26,7 @@ import com.elearning.client.model.Kelas;
 import com.elearning.client.model.Soal;
 import com.elearning.client.network.response.UploadFileResponse;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
 import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.google.android.material.card.MaterialCardView;
@@ -46,7 +47,7 @@ import okhttp3.RequestBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class SoalActivity extends AppCompatActivity implements PickiTCallbacks, SoalVIew, EasyPermissions.PermissionCallbacks{
+public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalVIew, EasyPermissions.PermissionCallbacks{
 
     private static final String TAG = "Soal Activity";
     SoalPresenter presenter;

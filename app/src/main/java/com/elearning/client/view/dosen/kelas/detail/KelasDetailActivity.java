@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.elearning.client.R;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.dosen.enroll.AnggotaKelasActivity;
 import com.elearning.client.view.dosen.kelas.editor.KelasActivity;
@@ -23,7 +24,7 @@ import com.fxn.BubbleTabBar;
  * Created by wolfsoft4 on 22/1/18.
  */
 
-public class KelasDetailActivity extends AppCompatActivity {
+public class KelasDetailActivity extends BaseActivity {
     SessionManager session;
     BubbleTabBar bubbleTabBar;
     FrameLayout frameLayout;

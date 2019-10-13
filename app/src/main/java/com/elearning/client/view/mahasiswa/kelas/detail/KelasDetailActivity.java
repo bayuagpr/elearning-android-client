@@ -21,6 +21,7 @@ import com.elearning.client.model.Enrollment;
 import com.elearning.client.model.Kelas;
 import com.elearning.client.model.Mahasiswa;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.mahasiswa.enroll.AnggotaKelasActivity;
 import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
@@ -32,7 +33,7 @@ import java.util.UUID;
  * Created by wolfsoft4 on 22/1/18.
  */
 
-public class KelasDetailActivity extends AppCompatActivity implements KelasDetailView{
+public class KelasDetailActivity extends BaseActivity implements KelasDetailView{
     SessionManager session;
     BubbleTabBar bubbleTabBar;
     ProgressDialog progressDialog;
@@ -138,7 +139,7 @@ public class KelasDetailActivity extends AppCompatActivity implements KelasDetai
                 Log.d("statusExist", "statusEnroll: "+statusEnroll);
                 viewpager.setVisibility(View.GONE);
                 status.setVisibility(View.VISIBLE);
-                status.setText("Masih menunggu persetujuan bergabung dari "+namaDosen);
+                status.setText("Masih menunggu persetujuan bergabung dari "+"\n"+namaDosen);
             }
         } else {
             viewpager.setVisibility(View.GONE);

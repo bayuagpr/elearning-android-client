@@ -12,7 +12,7 @@ import com.elearning.client.view.auth.AuthStartActivityActivity;
 import com.elearning.client.view.dosen.MainDosenActivity;
 import com.elearning.client.view.mahasiswa.MainMahasiswaActivity;
 
-public class SpalshScreenActivity extends AppCompatActivity {
+public class SpalshScreenActivity extends BaseActivity {
     private SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

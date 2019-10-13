@@ -2,6 +2,7 @@ package com.elearning.client.view.dosen.soal.editor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -9,8 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elearning.client.R;
+import com.elearning.client.view.BaseActivity;
 
-public class PDFActivity extends AppCompatActivity{
+public class PDFActivity extends BaseActivity {
 //    RemotePDFViewPager remotePDFViewPager;
 //    PDFPagerAdapter pdfAdapter;
 WebView webView;
@@ -33,7 +35,7 @@ WebView webView;
 
     private void initDataIntent() {
         Intent intent= getIntent();
-        attachmentMateri = intent.getStringExtra("attachment_materi");
+        attachmentMateri = intent.getStringExtra("attachment_soal");
 
     }
 

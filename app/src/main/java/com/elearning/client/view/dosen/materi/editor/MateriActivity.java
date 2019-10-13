@@ -25,6 +25,7 @@ import com.elearning.client.model.Materi;
 import com.elearning.client.network.response.UploadFileResponse;
 import com.elearning.client.utils.SessionManager;
 
+import com.elearning.client.view.BaseActivity;
 import com.google.android.material.card.MaterialCardView;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
@@ -41,7 +42,7 @@ import okhttp3.RequestBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class MateriActivity extends AppCompatActivity implements PickiTCallbacks, MateriView, EasyPermissions.PermissionCallbacks{
+public class MateriActivity extends BaseActivity implements PickiTCallbacks, MateriView, EasyPermissions.PermissionCallbacks{
 
     private static final String TAG = "Materi Activity";
     MateriPresenter presenter;

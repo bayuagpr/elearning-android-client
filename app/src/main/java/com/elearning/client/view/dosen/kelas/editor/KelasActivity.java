@@ -21,6 +21,7 @@ import com.elearning.client.model.Kelas;
 import com.elearning.client.model.MataKuliah;
 import com.elearning.client.network.response.MataKuliahResponse;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class KelasActivity extends AppCompatActivity implements KelasView {
+public class KelasActivity extends BaseActivity implements KelasView {
 
     KelasPresenter presenter;
     ProgressDialog progressDialog;

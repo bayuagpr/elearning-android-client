@@ -26,6 +26,7 @@ import com.elearning.client.model.Mahasiswa;
 import com.elearning.client.model.Soal;
 import com.elearning.client.network.response.UploadFileResponse;
 import com.elearning.client.utils.SessionManager;
+import com.elearning.client.view.BaseActivity;
 import com.google.android.material.card.MaterialCardView;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
@@ -43,7 +44,7 @@ import okhttp3.RequestBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class NilaiActivity extends AppCompatActivity implements PickiTCallbacks, NilaiView, EasyPermissions.PermissionCallbacks{
+public class NilaiActivity extends BaseActivity implements PickiTCallbacks, NilaiView, EasyPermissions.PermissionCallbacks{
 
     private static final String TAG = "Nilai Activity";
     NilaiPresenter presenter;
