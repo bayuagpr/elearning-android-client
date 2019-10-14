@@ -341,6 +341,7 @@
                 android:textAppearance="@style/TextAppearance.InputField"
                 android:background="?attr/selectableItemBackground"
                 style="@style/Widget.HowMuch.InputTextView" />
+
             <TextView
                 android:id="@+id/fileUpdateSoal"
                 android:visibility="gone"

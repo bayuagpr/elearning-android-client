@@ -36,6 +36,9 @@ import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.google.android.material.card.MaterialCardView;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -52,7 +55,7 @@ import okhttp3.RequestBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalVIew, EasyPermissions.PermissionCallbacks{
+public class SoalActivity extends BaseActivity implements Validator.ValidationListener,PickiTCallbacks, SoalVIew, EasyPermissions.PermissionCallbacks{
 
     private static final String TAG = "Soal Activity";
     SoalPresenter presenter;
@@ -65,6 +68,7 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
     MultipartBody.Part fileToUpload;
     Date dueDate;
     private SlideDateTimeListener listener;
+    @NotEmpty(message = "Judul soal tidak boleh kosong")
     @BindView(R.id.judulSoal)
     EditText judulSoal;
     @BindView(R.id.descSoal)
@@ -75,6 +79,7 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
     TextView lihatSoal;
     @BindView(R.id.lihatSoalCv)
     MaterialCardView lihatSoalLayout;
+
     @BindView(R.id.dateTv)
     TextView dateSoal;
     @BindView(R.id.dateCv)
@@ -104,7 +109,7 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
     private Uri uri;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private SimpleDateFormat mFormatter;
-
+    Validator validator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +125,8 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
         presenter = new SoalPresenter(this);
         //container = findViewById(R.id.activityMainPdfView);
         pickiT = new PickiT(this, this);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
         mFormatter = new SimpleDateFormat(" dd MMMM yyyy hh:mm aa");
         initDataIntent();
         setSpinnerUkuran();
@@ -203,27 +210,47 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
         startActivity(intent);
     }
 
+    void simpanSoal(){
+        if(dueDate == null){
+            showDialog();
+        }else{
+            Soal soal = new Soal();
+            soal.setJudul(judulSoal.getText().toString());
+            soal.setDeskripsi(descSoal.getText().toString());
+            soal.setAttachment(attachmentSoal);
+            soal.setDueDate(dueDate);
+            soal.setTipe(s_tipe.getSelectedItem().toString());
+            Kelas kelas =  new Kelas(idKelas);
+            kelas.setId(idKelas);
+            soal.setKelas(kelas);
+            presenter.saveSoal(
+                    session.getKeyToken(),
+                    soal
+
+            );
+        }
+
+    }
+    private void showDialog(){
+        DateValidatorDialog dialog=new DateValidatorDialog();
+        dialog.setListener(respononse -> {
+            if(respononse){
+                dateSoal.performClick();
+            }
+        });
+        dialog.deleteDialog(this);
+    }
     @OnClick(R.id.saveBtnSoal) void simpan() {
+        validator.validate();
 
-        Soal soal = new Soal();
-        soal.setJudul(judulSoal.getText().toString());
-        soal.setDeskripsi(descSoal.getText().toString());
-        soal.setAttachment(attachmentSoal);
-        soal.setDueDate(dueDate);
-        soal.setTipe(s_tipe.getSelectedItem().toString());
-        Kelas kelas =  new Kelas(idKelas);
-        kelas.setId(idKelas);
-        soal.setKelas(kelas);
-        presenter.saveSoal(
-                session.getKeyToken(),
-                soal
-
-        );
 
     }
 
     @OnClick(R.id.updateSoal) void update() {
        // long dateSer = dueDate.getTime() / 1000L;
+        if(dueDate == null){
+
+        }
         Soal soal = new Soal();
         soal.setJudul(judulSoal.getText().toString());
         soal.setDeskripsi(descSoal.getText().toString());
@@ -245,7 +272,25 @@ public class SoalActivity extends BaseActivity implements PickiTCallbacks, SoalV
                 id
         );
     }
+    @Override
+    public void onValidationSucceeded() {
+        simpanSoal();
+    }
 
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+
+            // Display error messages ;)
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
     @Override
     public Context getContext() {
         return getApplicationContext();

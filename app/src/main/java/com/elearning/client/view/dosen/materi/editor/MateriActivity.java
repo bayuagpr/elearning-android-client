@@ -29,6 +29,9 @@ import com.elearning.client.view.BaseActivity;
 import com.google.android.material.card.MaterialCardView;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.File;
 import java.util.List;
@@ -42,7 +45,7 @@ import okhttp3.RequestBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class MateriActivity extends BaseActivity implements PickiTCallbacks, MateriView, EasyPermissions.PermissionCallbacks{
+public class MateriActivity extends BaseActivity implements Validator.ValidationListener,PickiTCallbacks, MateriView, EasyPermissions.PermissionCallbacks{
 
     private static final String TAG = "Materi Activity";
     MateriPresenter presenter;
@@ -53,7 +56,7 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
     PickiT pickiT;
     String id, idKelas, judul_materi, deskripsi_materi, namaDosen, attachmentMateri;
     MultipartBody.Part fileToUpload;
-
+    @NotEmpty(message = "Judul pertemuan tidak boleh kosong")
     @BindView(R.id.judulMateri)
     EditText judulMateri;
     @BindView(R.id.deskripsiMateri)
@@ -79,7 +82,7 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
     @BindView(R.id.changePdfTv)
     TextView gantiMateri;
     private Uri uri;
-
+    Validator validator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +98,11 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
         presenter = new MateriPresenter(this);
         //container = findViewById(R.id.activityMainPdfView);
         pickiT = new PickiT(this, this);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
         initDataIntent();
         setTextEditor();
+
         uploadMateri.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -135,7 +141,7 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
         startActivity(intent);
     }
 
-    @OnClick(R.id.saveBtnMateri) void simpan() {
+    void simpanMateri(){
         Materi materi = new Materi();
         materi.setJudul(judulMateri.getText().toString());
         materi.setDeskripsi(deskripsiMateri.getText().toString());
@@ -148,7 +154,11 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
                 materi
 
         );
+    }
 
+    @OnClick(R.id.saveBtnMateri) void simpan() {
+
+        validator.validate();
     }
 
     @OnClick(R.id.updateMateri) void update() {
@@ -171,7 +181,25 @@ public class MateriActivity extends BaseActivity implements PickiTCallbacks, Mat
                 id
         );
     }
+    @Override
+    public void onValidationSucceeded() {
+        simpanMateri();
+    }
 
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+
+            // Display error messages ;)
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
     @Override
     public Context getContext() {
         return getApplicationContext();
